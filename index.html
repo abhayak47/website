@@ -1,98 +1,489 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080808">
-<meta name="description" content="Onjaal builds thoughtful business software. Discover Onjaal HRMS for employee management, attendance, leave, workflows and HR operations.">
-<title>Onjaal — Thoughtful software for better-run businesses</title>
-<style>
-:root{color-scheme:dark;--bg:#080808;--panel:#111110;--panel2:#171716;--fg:#f5f5f2;--muted:#aaa9a3;--dim:#74736e;--line:#2b2b28;--white:#fff}
-*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}
-.container{width:min(1160px,calc(100% - 48px));margin:auto}.topbar{border-bottom:1px solid var(--line);background:rgba(8,8,8,.86);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:.19em;font-size:18px}.logo{width:29px;height:29px;position:relative;display:inline-block}.logo:before,.logo:after{content:"";position:absolute;width:16px;height:23px;top:2px;border:1.5px solid #f5f5f2;border-radius:50% 50% 46% 46%}.logo:before{left:1px;transform:rotate(-35deg)}.logo:after{right:1px;transform:rotate(35deg)}.navlinks{display:flex;align-items:center;gap:28px;color:#c2c1bc;font-size:13px}.navlinks a:hover,.textlink:hover{color:#fff}.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid #f3f3ef;background:#f3f3ef;color:#080808;border-radius:5px;padding:13px 18px;font-size:13px;font-weight:700;transition:transform .2s,background .2s}.button:hover{transform:translateY(-2px);background:#d9d9d4}.button.ghost{background:transparent;color:#f3f3ef;border-color:#41413d}.button.ghost:hover{background:#171716}.menu{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:5px;padding:8px 11px}
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 72% 40%,rgba(255,255,255,.075),transparent 38%),radial-gradient(#aaa .5px,transparent .5px);background-size:auto,6px 6px;opacity:.35;pointer-events:none;mask-image:linear-gradient(to bottom,#000,transparent 90%)}.hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:60px;padding:116px 0 112px}.eyebrow{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.19em;font-size:10px;color:#c1c0bb}.eyebrow:before{content:"";width:22px;height:1px;background:#aaa}.hero h1{font-size:clamp(48px,6.3vw,82px);line-height:.99;letter-spacing:-.075em;font-weight:540;max-width:740px;margin:27px 0 25px}.hero h1 span{color:#777772}.lead{font-size:17px;line-height:1.8;color:#bdbcb6;max-width:600px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.hero-note{font-size:11px;color:var(--dim);margin-top:23px}.visual{min-height:380px;display:flex;align-items:center;justify-content:center;position:relative}.orbit{width:min(340px,100%);aspect-ratio:1;position:relative;border:1px solid #33332f;border-radius:50%;display:grid;place-items:center;animation:drift 9s ease-in-out infinite}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #30302d;border-radius:50%;inset:34px}.orbit:after{inset:75px;border-color:#454541}.core{width:112px;height:112px;border:1px solid #777;border-radius:28px;display:grid;place-items:center;transform:rotate(45deg);box-shadow:0 0 80px #ffffff0a}.core span{transform:rotate(-45deg);font-size:29px;letter-spacing:-.1em;font-weight:700}.orbit-dot{position:absolute;width:8px;height:8px;background:#eee;border-radius:50%;top:49px;right:55px;box-shadow:0 0 22px #fff7}.float-card{position:absolute;right:-4px;bottom:40px;background:#111;border:1px solid #373733;border-radius:8px;padding:16px 18px;width:180px;box-shadow:0 20px 60px #0008}.float-card small{color:var(--dim);font-size:9px;letter-spacing:.15em;text-transform:uppercase}.float-card strong{display:block;font-size:13px;margin-top:7px;font-weight:600}.float-card span{display:block;color:#aaa;font-size:11px;margin-top:5px}
-section{padding:100px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:45px}.section-head h2{font-size:clamp(34px,4vw,52px);line-height:1.08;letter-spacing:-.06em;font-weight:540;margin:15px 0 0;max-width:700px}.section-head p{max-width:360px;color:var(--muted);font-size:14px;line-height:1.8;margin:0}.pill{display:inline-flex;border:1px solid #454540;border-radius:99px;padding:7px 10px;color:#d0d0ca;text-transform:uppercase;letter-spacing:.12em;font-size:9px}
-.product{display:grid;grid-template-columns:.95fr 1.05fr;border:1px solid #363632;border-radius:10px;overflow:hidden;background:var(--panel)}.product-copy{padding:clamp(28px,5vw,56px)}.product-copy h3{font-size:clamp(30px,3.4vw,43px);line-height:1.05;letter-spacing:-.06em;font-weight:550;margin:20px 0 17px}.product-copy p{color:#b9b8b2;font-size:14px;line-height:1.85}.product-copy ul{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}.product-copy li{display:flex;gap:9px;font-size:12px;color:#e0e0db}.check{color:#f5f5f2;font-size:15px}.product-preview{padding:26px;background:linear-gradient(135deg,#20201e,#0e0e0d);border-left:1px solid #30302d;display:flex;align-items:center;justify-content:center;min-height:420px}.dashboard{width:100%;max-width:460px;border:1px solid #42423d;border-radius:8px;background:#0b0b0b;overflow:hidden;box-shadow:0 24px 70px #0008;transform:perspective(1000px) rotateY(-4deg)}.dash-top{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:1px solid #292925;font-size:10px}.dash-top b{letter-spacing:.12em}.dash-body{padding:18px}.dash-greet{font-size:18px;letter-spacing:-.04em;margin-bottom:5px}.dash-sub{font-size:10px;color:#81817b}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.stat{padding:12px 10px;background:#151513;border:1px solid #292925;border-radius:5px}.stat small{display:block;color:#85857e;font-size:9px}.stat strong{display:block;font-size:19px;font-weight:550;margin-top:6px}.bar-title{font-size:10px;margin:19px 0 12px}.bars{height:94px;display:flex;align-items:flex-end;gap:9px;border-bottom:1px solid #33332e;padding:0 6px}.bars i{display:block;flex:1;background:linear-gradient(#ddd,#777);border-radius:2px 2px 0 0;opacity:.8}.dash-row{display:flex;justify-content:space-between;color:#aaa;font-size:9px;margin-top:12px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.feature{padding:27px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:190px}.feature .num{color:#777;font-size:10px;letter-spacing:.1em}.feature h3{font-size:17px;font-weight:550;letter-spacing:-.03em;margin:25px 0 9px}.feature p{color:var(--muted);font-size:12px;line-height:1.8;margin:0}
-.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{border:1px solid var(--line);padding:23px;border-radius:7px;background:linear-gradient(150deg,#141413,#0b0b0b)}.step b{font-size:10px;color:#888;letter-spacing:.13em}.step h3{font-size:16px;font-weight:550;margin:26px 0 9px}.step p{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
-.pricing{display:grid;grid-template-columns:1fr 1fr;gap:16px}.price-card{border:1px solid #373733;border-radius:8px;background:#10100f;padding:30px;display:flex;flex-direction:column}.price-card.featured{background:#f1f1ec;color:#0b0b0a;border-color:#f1f1ec}.price-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.price-top h3{font-size:18px;font-weight:600;margin:0}.price-top .pill{color:inherit;border-color:#777}.amount{font-size:clamp(34px,4vw,48px);letter-spacing:-.06em;margin:26px 0 4px;font-weight:560}.amount small{font-size:12px;letter-spacing:0;font-weight:450}.price-caption{color:#aaa;font-size:12px}.featured .price-caption,.featured .price-desc,.featured .price-list li{color:#55554f}.price-desc{color:#aaa;font-size:13px;line-height:1.8;min-height:48px;margin:18px 0}.price-list{list-style:none;padding:0;margin:10px 0 28px;display:grid;gap:12px}.price-list li{display:flex;gap:9px;color:#d0d0ca;font-size:12px}.price-card .button{margin-top:auto}.featured .button{background:#0b0b0a;color:#fff;border-color:#0b0b0a}.pricing-note{font-size:11px;color:#777;margin-top:18px;line-height:1.8}
-.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}.about-grid h2{font-size:clamp(36px,4vw,54px);line-height:1.05;letter-spacing:-.065em;font-weight:540;margin:16px 0}.about-text p{color:#b6b5af;font-size:15px;line-height:1.95;margin:0 0 18px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}.principle{padding-top:16px;border-top:1px solid #44443f}.principle b{font-size:12px;font-weight:600}.principle p{font-size:11px;color:#96958f;line-height:1.7;margin:8px 0 0}
-.demo{background:radial-gradient(ellipse at 80% 0%,#20201e 0%,transparent 42%),#0d0d0c}.demo-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}.demo-copy h2{font-size:clamp(38px,4.7vw,58px);line-height:1.04;letter-spacing:-.065em;font-weight:540;margin:18px 0}.demo-copy p{font-size:14px;color:#b3b2ac;line-height:1.9}.contact-note{margin-top:32px;padding-top:22px;border-top:1px solid #343430;color:#92918b;font-size:12px}.form{border:1px solid #363632;border-radius:8px;padding:clamp(22px,4vw,36px);background:#111110}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:#d5d4cf}.field input,.field select,.field textarea{width:100%;background:#090909;border:1px solid #3a3a35;border-radius:4px;padding:13px;color:#f4f4ef;outline:none;font-size:12px}.field input:focus,.field select:focus,.field textarea:focus{border-color:#aaa}.field textarea{min-height:100px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#686862}.form small{display:block;color:#77766f;font-size:10px;line-height:1.7;margin:15px 0}.form .button{width:100%;cursor:pointer}.form-status{font-size:12px;color:#ddd;margin-top:14px;line-height:1.7}.hp{position:absolute;left:-5000px}
-footer{padding:27px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#77766f;font-size:11px}.footer-brand{color:#eee;letter-spacing:.15em;font-weight:700}.footer-links{display:flex;gap:20px}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-@keyframes drift{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(1deg)}}
-@media(max-width:850px){.navlinks{gap:15px}.hero-grid{grid-template-columns:1fr;gap:20px;padding:85px 0}.visual{min-height:290px}.orbit{width:260px}.float-card{right:5%;bottom:15px}.product{grid-template-columns:1fr}.product-preview{border-left:0;border-top:1px solid #30302d}.features{grid-template-columns:repeat(2,1fr)}.workflow{grid-template-columns:repeat(2,1fr)}.about-grid,.demo-grid{grid-template-columns:1fr;gap:32px}.section-head{align-items:flex-start;flex-direction:column}.section-head p{max-width:580px}}
-@media(max-width:600px){.container{width:min(100% - 36px,1160px)}.nav{height:66px}.navlinks{display:none;position:absolute;left:18px;right:18px;top:65px;padding:18px;background:#111;border:1px solid var(--line);border-radius:6px;flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks .button{width:100%}.menu{display:block}.nav>.button{display:none}.hero-grid{padding:70px 0 55px}.hero h1{font-size:clamp(48px,14vw,70px)}.lead{font-size:15px}.visual{min-height:260px}.orbit{width:230px}.float-card{right:0;bottom:0;width:155px;padding:12px}.section-head{margin-bottom:30px}section{padding:70px 0}.features{grid-template-columns:1fr}.feature{min-height:0}.feature h3{margin-top:16px}.workflow,.pricing{grid-template-columns:1fr}.step{padding:20px}.step h3{margin-top:18px}.product-copy ul{grid-template-columns:1fr}.product-preview{padding:15px;min-height:330px}.stat-grid{gap:5px}.stat{padding:9px 7px}.stat strong{font-size:16px}.principles{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}.demo-grid{gap:24px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-</style>
+<title>Onjaal HRMS — HR management software for growing teams</title>
+<meta name="description" content="Onjaal HRMS brings employee records, attendance, leave, approvals and HR documents into one workspace for growing teams. See pricing and request a demo.">
+<link rel="canonical" href="https://onjaal.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Onjaal">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://onjaal.com/">
+<meta property="og:title" content="Onjaal HRMS — HR management software for growing teams">
+<meta property="og:description" content="Employee records, attendance, leave, approvals and HR documents in one workspace. See pricing and request a demo.">
+<meta property="og:image" content="https://onjaal.com/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Onjaal logo with the tagline Simpler HR. Stronger Teams.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/brand/favicon-96.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preload" href="assets/fonts/schibsted-grotesk-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://onjaal.com/#organization",
+      "name": "Onjaal",
+      "url": "https://onjaal.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://onjaal.com/assets/brand/onjaal-logo-full.png",
+        "width": 644,
+        "height": 181
+      },
+      "email": "tech@onjaal.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "tech@onjaal.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://onjaal.com/#website",
+      "name": "Onjaal",
+      "alternateName": "Onjaal.com",
+      "url": "https://onjaal.com/",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://onjaal.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
-<div class="topbar"><div class="container nav">
-<a class="brand" href="#home" aria-label="Onjaal home"><span class="logo" aria-hidden="true"></span><span>ONJAAL</span></a>
-<nav class="navlinks" id="navlinks"><a href="#platform">Platform</a><a href="#capabilities">Capabilities</a><a href="#pricing">Pricing</a><a href="#about">About</a><a class="button" href="#demo">Book a demo <span>↗</span></a></nav>
-<a class="button" href="#demo">Book a demo <span>↗</span></a><button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">Menu</button>
-</div></div>
-<header class="hero" id="home"><div class="container hero-grid">
-<div><div class="eyebrow">Independent thinking. Useful technology.</div><h1>Thoughtful software for <span>better-run businesses.</span></h1><p class="lead">We’re building practical digital tools that help teams work with more clarity, bring everyday processes together, and spend less energy on busywork.</p><div class="actions"><a class="button" href="#platform">Explore Onjaal HRMS <span>↘</span></a><a class="button ghost" href="#about">Get to know Onjaal</a></div><p class="hero-note">One focused product today. A bigger vision for tomorrow.</p></div>
-<div class="visual" aria-hidden="true"><div class="orbit"><div class="core"><span>O.</span></div><i class="orbit-dot"></i></div><div class="float-card"><small>Now building</small><strong>Onjaal HRMS</strong><span>People operations, made clearer.</span></div></div>
-</div></header>
-<section id="platform"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">01 / The first product</div><h2>Meet Onjaal HRMS.</h2></div><p>A more connected way to manage the employee journey—from joining day to everyday work and beyond.</p></div>
-<div class="product reveal"><div class="product-copy"><span class="pill">Human resources management</span><h3>People operations, in one considered workspace.</h3><p>Onjaal HRMS is being built to help growing teams organise employee information, attendance, leave, approvals, HR documentation and essential workflows in one place—without making daily work feel more complicated.</p><ul><li><span class="check">↗</span> Employee records & lifecycle</li><li><span class="check">↗</span> Attendance & leave tracking</li><li><span class="check">↗</span> Approvals & employee self-service</li><li><span class="check">↗</span> HR documents & reporting</li><li><span class="check">↗</span> Payroll-related workflows</li><li><span class="check">↗</span> Configurable processes</li></ul><div class="actions"><a class="button" href="#demo">Request a product demo <span>↗</span></a></div></div>
-<div class="product-preview"><div class="dashboard"><div class="dash-top"><b>ONJAAL / PEOPLE</b><span class="pill">Workspace preview</span></div><div class="dash-body"><div class="dash-greet">People overview</div><div class="dash-sub">A conceptual preview of an HR workspace</div><div class="stat-grid"><div class="stat"><small>Team</small><strong>People</strong></div><div class="stat"><small>Requests</small><strong>Leave</strong></div><div class="stat"><small>Daily</small><strong>Time</strong></div></div><div class="bar-title">Workforce activity · illustrative</div><div class="bars"><i style="height:34%"></i><i style="height:52%"></i><i style="height:42%"></i><i style="height:70%"></i><i style="height:57%"></i><i style="height:82%"></i><i style="height:66%"></i><i style="height:91%"></i><i style="height:72%"></i><i style="height:84%"></i></div><div class="dash-row"><span>One view for everyday HR</span><span>ONJAAL ↗</span></div></div></div></div></div>
-</div></section>
-<section id="capabilities"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">02 / Built around real work</div><h2>Less scattered admin.<br>More connected work.</h2></div><p>Bring common people processes into a clearer flow. Features and integrations can be scoped around your organisation’s needs.</p></div>
-<div class="features">
-<article class="feature reveal"><span class="num">CAPABILITY / 01</span><h3>Employee information</h3><p>Keep employee profiles and key employment details organised in one accessible place.</p></article>
-<article class="feature reveal"><span class="num">CAPABILITY / 02</span><h3>Onboarding & lifecycle</h3><p>Structure joining workflows, employee changes and exit processes with clearer ownership.</p></article>
-<article class="feature reveal"><span class="num">CAPABILITY / 03</span><h3>Attendance & leave</h3><p>Support time, attendance and leave workflows, with biometric integration subject to device and API compatibility.</p></article>
-<article class="feature reveal"><span class="num">CAPABILITY / 04</span><h3>Requests & approvals</h3><p>Make common employee requests and approval steps easier to follow and manage.</p></article>
-<article class="feature reveal"><span class="num">CAPABILITY / 05</span><h3>Documents & reporting</h3><p>Bring HR documents, useful reports and operational visibility into the workflow.</p></article>
-<article class="feature reveal"><span class="num">CAPABILITY / 06</span><h3>Payroll-related workflows</h3><p>Organise supporting HR and payroll processes. Statutory calculations and compliance scope should be confirmed during a demo.</p></article>
-</div></div></section>
-<section><div class="container"><div class="section-head reveal"><div><div class="eyebrow">03 / A considered rollout</div><h2>Designed to fit the way your team works.</h2></div><p>We start with your process, align the setup, and work through implementation details together.</p></div><div class="workflow">
-<div class="step reveal"><b>STEP 01</b><h3>Understand</h3><p>Discuss your team size, existing processes, current tools and operational priorities.</p></div>
-<div class="step reveal"><b>STEP 02</b><h3>Configure</h3><p>Agree the modules, workflows, data requirements and any integration needs.</p></div>
-<div class="step reveal"><b>STEP 03</b><h3>Implement</h3><p>Plan setup, data preparation, user access and team orientation around the agreed scope.</p></div>
-<div class="step reveal"><b>STEP 04</b><h3>Support</h3><p>Review how the system is working and discuss refinements as your needs evolve.</p></div>
-</div></div></section>
-<section id="pricing"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">04 / Straightforward pricing</div><h2>A clear starting point.</h2></div><p>Indicative pricing for a 150-user deployment. We’ll confirm final scope, taxes, integrations and implementation requirements before any commitment.</p></div>
-<div class="pricing">
-<article class="price-card reveal"><div class="price-top"><h3>HRMS Subscription</h3><span class="pill">Recurring</span></div><div class="amount">₹1,06,200 <small>/ year</small></div><div class="price-caption">₹59 per user / month · based on 150 users</div><p class="price-desc">Annual subscription for the HRMS workspace, based on the current planning package.</p><ul class="price-list"><li><span>↗</span> Core HR workflows</li><li><span>↗</span> Employee and leave management</li><li><span>↗</span> Attendance and approvals</li><li><span>↗</span> HR documentation and reporting</li></ul><a class="button ghost" href="#demo">Discuss subscription</a></article>
-<article class="price-card featured reveal"><div class="price-top"><h3>Implementation</h3><span class="pill">One-time</span></div><div class="amount">₹60,000 <small>one-time</small></div><div class="price-caption">Initial implementation and setup</div><p class="price-desc">A planned starting scope to configure the solution and prepare your team for adoption.</p><ul class="price-list"><li><span>↗</span> Initial setup and configuration</li><li><span>↗</span> Workflow and requirements alignment</li><li><span>↗</span> Data preparation guidance</li><li><span>↗</span> User onboarding and handover</li></ul><a class="button" href="#demo">Plan my implementation</a></article>
-</div>
-<div class="pricing-note reveal">Optional biometric integration: ₹15,000 one-time, subject to device/API compatibility and confirmed scope. Illustrative total for year one at 150 users: ₹1,81,200 excluding optional biometric integration, applicable taxes and any separately agreed scope. Year two onward: ₹1,06,200/year, subject to renewal terms. Final commercial terms will be confirmed in a written proposal.</div>
-</div></section>
-<section id="about"><div class="container about-grid"><div class="reveal"><div class="eyebrow">05 / The Onjaal point of view</div><h2>Useful technology.<br>Made with intent.</h2></div><div class="about-text reveal"><p>Onjaal is an emerging software brand focused on building practical tools for real business needs. We believe good software should make work clearer—not add another layer of complexity.</p><p>Our first product is Onjaal HRMS, focused on helping organisations bring everyday people operations into a more organised workspace. We’re starting with a focused product, learning from real teams, and building deliberately from there.</p><div class="principles"><div class="principle"><b>Practical by design</b><p>Start with everyday problems and useful outcomes.</p></div><div class="principle"><b>Clarity over clutter</b><p>Keep the experience focused and understandable.</p></div><div class="principle"><b>Built with intent</b><p>Grow thoughtfully, guided by real-world needs.</p></div></div></div></div></section>
-<section class="demo" id="demo"><div class="container demo-grid"><div class="demo-copy reveal"><div class="eyebrow">06 / Start a conversation</div><h2>Let’s see if Onjaal fits your team.</h2><p>Tell us a little about your organisation and what you’re looking to improve. We’ll use it to prepare a more relevant HRMS conversation and demo.</p><div class="contact-note">Prefer email? <a class="textlink" href="mailto:tech@onjaal.com">tech@onjaal.com</a><br><br>Submitting the form will send your enquiry to the Onjaal team once the form service is configured.</div></div>
-<form class="form reveal" id="demo-form" action="https://formsubmit.co/tech@onjaal.com" method="POST">
-<input type="hidden" name="_subject" value="New Onjaal HRMS demo enquiry">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="true">
-<input type="hidden" name="_next" value="">
-<div class="hp" aria-hidden="true"><label>Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"></label></div>
-<div class="form-grid">
-<div class="field"><label for="name">Full name *</label><input id="name" name="Full name" placeholder="Your name" autocomplete="name" required></div>
-<div class="field"><label for="email">Work email *</label><input id="email" name="Work email" type="email" placeholder="you@company.com" autocomplete="email" required></div>
-<div class="field"><label for="company">Company *</label><input id="company" name="Company" placeholder="Company name" autocomplete="organization" required></div>
-<div class="field"><label for="phone">Phone number</label><input id="phone" name="Phone number" type="tel" placeholder="+91" autocomplete="tel"></div>
-<div class="field"><label for="employees">Team size *</label><select id="employees" name="Team size" required><option value="">Select team size</option><option>1–25 employees</option><option>26–50 employees</option><option>51–100 employees</option><option>101–150 employees</option><option>151–300 employees</option><option>301+ employees</option></select></div>
-<div class="field"><label for="need">What are you exploring?</label><select id="need" name="Primary interest"><option value="">Choose an area</option><option>HRMS / employee management</option><option>Attendance and leave</option><option>Biometric integration</option><option>Implementation and pricing</option><option>Other / not sure yet</option></select></div>
-<div class="field full"><label for="message">Anything we should know?</label><textarea id="message" name="Message" placeholder="Tell us about your current process or what you’d like to improve."></textarea></div>
-<div class="field full"><button class="button" id="submit-btn" type="submit">Request a demo <span>↗</span></button></div>
-</div>
-<small>By submitting, you agree that Onjaal may contact you about this enquiry. Please do not include sensitive employee or personal data.</small>
-<div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-</form></div></section>
-<footer><div class="container footer-inner"><a class="footer-brand" href="#home">ONJAAL</a><span>© <span id="year">2026</span> Onjaal. All rights reserved.</span><div class="footer-links"><a href="mailto:tech@onjaal.com">Contact</a><a href="#platform">Onjaal HRMS</a><a href="#demo">Book a demo</a></div></div></footer>
-<script>
-const menu=document.getElementById('menu'),nav=document.getElementById('navlinks');
-menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}));
-document.getElementById('year').textContent=new Date().getFullYear();
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-/* Static form: FormSubmit sends the first submission to an email verification step.
-   After verifying tech@onjaal.com with their confirmation email, enquiries can be delivered there. */
-const form=document.getElementById('demo-form');
-form.addEventListener('submit',()=>{const status=document.getElementById('form-status');status.textContent='Submitting your request… You may be redirected to a confirmation page.';document.getElementById('submit-btn').disabled=true;});
-</script>
-</body></html>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Onjaal home">
+      <picture>
+        <source srcset="assets/brand/onjaal-logo-330.webp 330w, assets/brand/onjaal-logo.webp 644w" sizes="164px" type="image/webp">
+        <img src="assets/brand/onjaal-logo-330.png" srcset="assets/brand/onjaal-logo-330.png 330w, assets/brand/onjaal-logo.png 644w" sizes="164px" width="644" height="181" alt="Onjaal.com">
+      </picture>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20"><path d="M3 6h14"/><path d="M3 14h14"/></svg>
+      <span class="menu-label">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#hrms">Onjaal HRMS</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="#demo">Request a demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 id="hero-title"><span>Simpler HR.</span> <span>Stronger Teams.</span></h1>
+        <p class="hero-lead">Onjaal builds practical business software. Our first product, Onjaal HRMS, brings employee records, attendance, leave, approvals and HR documents into one workspace for growing teams.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-lg" href="#demo">Request a demo</a>
+          <a class="btn btn-secondary btn-lg" href="#pricing">See pricing</a>
+        </div>
+        <p class="hero-price">Indicative price: ₹1,06,200 a year for 150 users, plus one-time implementation.</p>
+      </div>
+
+      <figure class="journey" aria-labelledby="journey-caption">
+        <svg class="journey-ring" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#16A3FF"/>
+              <stop offset=".38" stop-color="#0177F9"/>
+              <stop offset=".7" stop-color="#2A47E0"/>
+              <stop offset="1" stop-color="#874CF5"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-track" cx="300" cy="300" r="186"/>
+          <circle class="ring-stroke" cx="300" cy="300" r="186" transform="rotate(-45 300 300)"/>
+        </svg>
+        <ol class="journey-stops">
+          <li style="--i:0">Joining</li>
+          <li style="--i:1">Records</li>
+          <li style="--i:2">Attendance</li>
+          <li style="--i:3">Leave</li>
+          <li style="--i:4">Approvals</li>
+          <li style="--i:5">Documents</li>
+          <li style="--i:6">Payroll support</li>
+          <li style="--i:7">Changes &amp; exit</li>
+        </ol>
+        <figcaption class="journey-center" id="journey-caption">
+          <span class="journey-title">Onjaal HRMS</span>
+          <span class="journey-sub">One workspace for the whole employee journey</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band band-mist" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <h2 id="about-title"><span>Onjaal is the company.</span> <span>Onjaal HRMS is our first product.</span></h2>
+      <div class="about-copy">
+        <p>Onjaal is an emerging software brand building practical tools for real business needs. We believe good software should make work clearer, not add another layer of complexity.</p>
+        <p>We’re starting with one focused product, learning from real teams, and building deliberately from there.</p>
+        <dl class="principles">
+          <div><dt>Practical by design</dt><dd>Start with everyday problems and useful outcomes.</dd></div>
+          <div><dt>Clarity over clutter</dt><dd>Keep the experience focused and understandable.</dd></div>
+          <div><dt>Built with intent</dt><dd>Grow thoughtfully, guided by real-world needs.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="hrms" aria-labelledby="hrms-title">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2 id="hrms-title">Meet Onjaal HRMS.</h2>
+        <p>A more connected way to manage the employee journey, from joining day to everyday work and beyond. Employee details, requests, approvals and documents live together in one workspace.</p>
+      </div>
+
+      <figure class="showcase">
+        <div class="app" aria-hidden="true">
+          <div class="app-bar">
+            <span class="app-brand"><img src="assets/brand/onjaal-mark-48.png" width="48" height="54" alt="">Onjaal HRMS</span>
+            <span class="app-search">Search people</span>
+            <span class="app-avatar">HR</span>
+          </div>
+          <div class="app-body">
+            <ul class="app-nav">
+              <li class="is-active">People</li>
+              <li>Attendance</li>
+              <li>Leave</li>
+              <li>Approvals <b>2</b></li>
+              <li>Documents</li>
+              <li>Reports</li>
+            </ul>
+            <div class="app-main">
+              <p class="app-crumb">People / Employee record</p>
+              <div class="app-person">
+                <span class="app-initials">AK</span>
+                <span><strong>Ananya Kulkarni</strong><span>Operations executive</span></span>
+              </div>
+              <ul class="app-tabs"><li class="is-active">Profile</li><li>Attendance</li><li>Leave</li><li>Documents</li></ul>
+              <div class="app-panels">
+                <div class="app-card app-request">
+                  <p class="app-card-title">Leave request</p>
+                  <p class="app-big">Casual leave, 2 days</p>
+                  <p class="app-meta">Thu 15 and Fri 16 October</p>
+                  <p class="app-status">Waiting for manager approval</p>
+                  <div class="app-buttons"><span class="app-btn app-btn-dark">Approve</span><span class="app-btn">Decline</span></div>
+                </div>
+                <div class="app-card">
+                  <p class="app-card-title">Joining checklist</p>
+                  <ul class="app-checks">
+                    <li class="done">Offer letter shared</li>
+                    <li class="done">Personal details added</li>
+                    <li class="done">ID documents uploaded</li>
+                    <li>Policy acknowledgement</li>
+                  </ul>
+                </div>
+                <div class="app-card app-docs">
+                  <p class="app-card-title">Documents</p>
+                  <ul class="app-files">
+                    <li>Offer letter</li>
+                    <li>ID proof</li>
+                    <li>Address proof</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Illustration of an employee record in Onjaal HRMS: a leave request awaiting approval, a joining checklist and stored documents. This is not a product screenshot; you’ll see the live product in your demo.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band band-flush" id="capabilities" aria-labelledby="cap-title">
+    <div class="wrap cap-grid">
+      <div class="cap-head">
+        <h2 id="cap-title">Less scattered admin. More connected work.</h2>
+        <p>Bring common people processes into a clearer flow. Processes are configurable, and features and integrations can be scoped around your organisation’s needs.</p>
+      </div>
+      <ul class="cap-list">
+        <li>
+          <h3>Every employee’s details in one place</h3>
+          <p>Keep employee profiles and key employment details organised and easy to find.</p>
+        </li>
+        <li>
+          <h3>A clear path from joining day to exit</h3>
+          <p>Structure joining workflows, employee changes and exit processes with clearer ownership.</p>
+        </li>
+        <li>
+          <h3>Attendance and leave in one flow</h3>
+          <p>Support time, attendance and leave workflows for your whole team.</p>
+          <p class="scope">Biometric integration is optional and subject to device and API compatibility.</p>
+        </li>
+        <li>
+          <h3>Requests that are easy to follow</h3>
+          <p>Employee self-service makes common requests and approval steps easier to track and manage.</p>
+        </li>
+        <li>
+          <h3>HR documents and reports in the same workspace</h3>
+          <p>Bring HR documents, useful reports and operational visibility into the workflow.</p>
+        </li>
+        <li>
+          <h3>Payroll-related work, better organised</h3>
+          <p>Organise the HR processes that support payroll.</p>
+          <p class="scope">The scope of statutory calculations and compliance is confirmed during your demo.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band-mist" id="rollout" aria-labelledby="rollout-title">
+    <div class="wrap">
+      <div class="section-intro">
+        <h2 id="rollout-title">Designed to fit the way your team works.</h2>
+        <p>We start with your process, align the setup, and work through implementation details together.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Understand</h3><p>Discuss your team size, existing processes, current tools and operational priorities.</p></li>
+        <li><h3>Configure</h3><p>Agree the modules, workflows, data requirements and any integration needs.</p></li>
+        <li><h3>Implement</h3><p>Plan setup, data preparation, user access and team orientation around the agreed scope.</p></li>
+        <li><h3>Support</h3><p>Review how the system is working and discuss refinements as your needs evolve.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band band-ink" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap pricing-grid">
+      <div class="pricing-copy">
+        <h2 id="pricing-title">Pricing you can see before the first call.</h2>
+        <p>Indicative pricing for a 150-user deployment. Final scope, applicable taxes, integrations and commercial terms are confirmed in a written proposal before any commitment.</p>
+        <div class="included">
+          <div>
+            <h3>The subscription includes</h3>
+            <ul>
+              <li>Core HR workflows</li>
+              <li>Employee and leave management</li>
+              <li>Attendance and approvals</li>
+              <li>HR documentation and reporting</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Implementation includes</h3>
+            <ul>
+              <li>Initial setup and configuration</li>
+              <li>Workflow and requirements alignment</li>
+              <li>Data preparation guidance</li>
+              <li>User onboarding and handover</li>
+            </ul>
+          </div>
+        </div>
+        <a class="btn btn-light btn-lg" href="#demo">Ask for a written proposal</a>
+      </div>
+
+      <div class="quote">
+        <table>
+          <caption>Indicative estimate for 150 users</caption>
+          <thead class="sr-only">
+            <tr><th scope="col">Item</th><th scope="col">Amount</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="q-item">Onjaal HRMS subscription</span><span class="q-note">150 users at ₹59 per user per month, billed yearly</span></th>
+              <td>₹1,06,200</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="q-item">Implementation</span><span class="q-note">One-time</span></th>
+              <td>₹60,000</td>
+            </tr>
+            <tr class="q-total">
+              <th scope="row"><span class="q-item">Year one</span></th>
+              <td>₹1,66,200</td>
+            </tr>
+            <tr class="q-optional">
+              <th scope="row"><span class="q-item">Biometric integration <em>Optional</em></span><span class="q-note">One-time, subject to device/API compatibility and confirmed scope</span></th>
+              <td>₹15,000</td>
+            </tr>
+            <tr class="q-total">
+              <th scope="row"><span class="q-item">Year one with biometric integration</span></th>
+              <td>₹1,81,200</td>
+            </tr>
+            <tr class="q-renew">
+              <th scope="row"><span class="q-item">From year two</span><span class="q-note">Subscription per year, subject to renewal terms</span></th>
+              <td>₹1,06,200</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="quote-foot">Applicable taxes are confirmed in your written proposal.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div class="faq-head">
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <p>Can’t find your answer? Email <a href="mailto:tech@onjaal.com">tech@onjaal.com</a>.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>What does the annual subscription include?</summary>
+          <p>The ₹1,06,200 annual subscription covers the Onjaal HRMS workspace for 150 users, which works out to ₹59 per user per month. It includes core HR workflows: employee and leave management, attendance and approvals, and HR documentation and reporting.</p>
+        </details>
+        <details>
+          <summary>What is covered by the ₹60,000 implementation fee?</summary>
+          <p>It’s a one-time starting scope: initial setup and configuration, aligning workflows and requirements with your team, data preparation guidance, and user onboarding and handover.</p>
+        </details>
+        <details>
+          <summary>Our team isn’t exactly 150 people. Can we still enquire?</summary>
+          <p>Yes. The pricing shown is indicative for a 150-user deployment. Share your team size in the enquiry form, and final scope and commercial terms will be confirmed in a written proposal.</p>
+        </details>
+        <details>
+          <summary>Will it work with our biometric attendance device?</summary>
+          <p>Biometric integration is optional and costs ₹15,000 one-time. Whether it’s possible depends on your device and its API compatibility, so the scope is confirmed before any commitment. Mentioning your device make and model in your enquiry helps.</p>
+        </details>
+        <details>
+          <summary>Does Onjaal HRMS handle payroll and statutory compliance?</summary>
+          <p>Onjaal HRMS supports payroll-related HR workflows. The scope of statutory calculations and compliance is confirmed during your demo, so you know exactly what is covered for your organisation.</p>
+        </details>
+        <details>
+          <summary>What do we pay after the first year?</summary>
+          <p>From year two, the subscription is ₹1,06,200 per year, subject to renewal terms. Implementation and biometric integration are one-time charges.</p>
+        </details>
+        <details>
+          <summary>What happens after we send an enquiry?</summary>
+          <p>Our team will review your enquiry and get back to you. The details you share help us prepare a more relevant conversation and demo.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-mist" id="demo" aria-labelledby="demo-title">
+    <div class="wrap demo-grid">
+      <div class="demo-copy">
+        <h2 id="demo-title">Let’s see if Onjaal fits your team.</h2>
+        <p>Tell us a little about your organisation and what you’re looking to improve. We’ll use it to prepare a more relevant HRMS conversation and demo.</p>
+        <p class="demo-next">Our team will review your enquiry and get back to you.</p>
+        <p class="demo-email">Prefer email? <a href="mailto:tech@onjaal.com">tech@onjaal.com</a></p>
+      </div>
+
+      <form class="form" id="demo-form" action="https://formsubmit.co/tech@onjaal.com" method="POST">
+        <input type="hidden" name="_subject" value="New Onjaal HRMS demo enquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_next" value="">
+        <div class="hp" aria-hidden="true"><label>Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="Full name" autocomplete="name" required>
+            <p class="field-error" id="name-error" data-message="Enter your full name."></p>
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="Work email" type="email" placeholder="you@company.com" autocomplete="email" required>
+            <p class="field-error" id="email-error" data-message="Enter an email address, like you@company.com."></p>
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="Company" autocomplete="organization" required>
+            <p class="field-error" id="company-error" data-message="Enter your company name."></p>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number <span class="optional">Optional</span></label>
+            <input id="phone" name="Phone number" type="tel" placeholder="+91" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="employees">Team size</label>
+            <select id="employees" name="Team size" required>
+              <option value="">Select team size</option>
+              <option>1–25 employees</option>
+              <option>26–50 employees</option>
+              <option>51–100 employees</option>
+              <option>101–150 employees</option>
+              <option>151–300 employees</option>
+              <option>301+ employees</option>
+            </select>
+            <p class="field-error" id="employees-error" data-message="Choose your team size."></p>
+          </div>
+          <div class="field">
+            <label for="need">What are you exploring? <span class="optional">Optional</span></label>
+            <select id="need" name="Primary interest">
+              <option value="">Choose an area</option>
+              <option>HRMS / employee management</option>
+              <option>Attendance and leave</option>
+              <option>Biometric integration</option>
+              <option>Implementation and pricing</option>
+              <option>Other / not sure yet</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="message">Anything we should know? <span class="optional">Optional</span></label>
+            <textarea id="message" name="Message" rows="4" placeholder="Your current process, or what you’d like to improve."></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" id="submit-btn" type="submit">Request a demo</button>
+        <p class="form-note">By submitting, you agree that Onjaal may contact you about this enquiry. Please don’t include sensitive employee or personal data.</p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="#top" aria-label="Onjaal home">
+        <picture>
+          <source srcset="assets/brand/onjaal-logo-full-460.webp 460w, assets/brand/onjaal-logo-full.webp 644w" sizes="230px" type="image/webp">
+          <img src="assets/brand/onjaal-logo-full-460.png" srcset="assets/brand/onjaal-logo-full-460.png 460w, assets/brand/onjaal-logo-full.png 644w" sizes="230px" width="644" height="181" alt="Onjaal.com: Simpler HR. Stronger Teams." loading="lazy">
+        </picture>
+      </a>
+      <p>Onjaal builds practical business software. Onjaal HRMS is our first product.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <h2>Onjaal HRMS</h2>
+        <ul>
+          <li><a href="#hrms">Overview</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="#about">About Onjaal</a></li>
+          <li><a href="#demo">Request a demo</a></li>
+          <li><a href="mailto:tech@onjaal.com">tech@onjaal.com</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>© <span id="year">2026</span> Onjaal. All rights reserved.</p>
+    <p><a href="https://onjaal.com/">onjaal.com</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
