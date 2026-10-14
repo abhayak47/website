@@ -143,6 +143,16 @@
   var need = document.getElementById('need');
   if (interest && need && map[interest]) need.value = map[interest];
 
+  // Free-plan visitors get matching wording on the title and the button
+  if (interest === 'free') {
+    var title = document.getElementById('demo-title');
+    var submit = document.getElementById('submit-btn');
+    if (title) title.textContent = 'Request free access';
+    if (submit) submit.textContent = 'Request free access';
+    var subj = form.querySelector('[name="_subject"]');
+    if (subj) subj.value = 'New Onjaal HRMS free plan request';
+  }
+
   // Preselect the team-size band from /contact/?users=120 (set by the pricing estimator)
   var users = parseInt(new URLSearchParams(location.search).get('users'), 10);
   var size = document.getElementById('employees');
