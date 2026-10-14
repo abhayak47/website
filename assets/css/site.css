@@ -1080,3 +1080,84 @@ a.product-card:hover .card-foot svg { transform: translateX(3px); }
 /* contact: form first on phones, and tighter on desktop so the fields are visible immediately */
 .contact-page-section, #demo.section { padding-top: clamp(28px, 4vw, 56px); }
 @media (max-width: 1020px) { .contact-grid .form { order: -1; } .contact-aside { order: 1; } }
+
+/* =====================================================================
+   v5 refinement: calmer, more minimal visual language
+   (lighter type, hairline cards, quiet labels, fewer pills)
+   ===================================================================== */
+:root { --band: clamp(72px, 8vw, 112px); }
+
+/* Type: lighter weights, smaller display sizes, more air */
+h2 { font-size: clamp(1.875rem, 1.25rem + 2.1vw, 2.875rem); font-weight: 650; letter-spacing: -0.032em; line-height: 1.1; }
+h3 { font-weight: 620; letter-spacing: -0.01em; }
+.hero h1 { font-size: clamp(2.75rem, 1.4rem + 4.4vw, 4.5rem); font-weight: 680; letter-spacing: -0.042em; line-height: 1; }
+.page-hero h1 { font-weight: 680; letter-spacing: -0.038em; }
+.cta-band h2 { font-size: clamp(2rem, 1.3rem + 2.8vw, 3.25rem); font-weight: 670; }
+.section-head p, .connect-lead, .suite-lead { font-size: var(--step-0); line-height: 1.6; }
+.hero-lead { font-size: 1.1875rem; }
+.price-big, .plan-price .amt, .tier-mini .t-price { font-weight: 700; }
+
+/* Quiet labels instead of decorated kickers */
+.kicker { font-size: 0.8125rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
+.kicker::before { display: none; }
+.on-night .kicker, .straddle .kicker { color: var(--on-night-muted); }
+
+/* Calmer backdrop */
+.grid-lines { display: none; }
+.glow { opacity: .75; }
+
+/* Status labels: dot + text, not coloured pills */
+.status, .on-night .status, .site-header .status, .site-footer .status, .is-live .status, .tile-dark .status { background: transparent !important; padding: 0 !important; border-radius: 0; font-size: 0.8125rem; font-weight: 600; gap: 7px; }
+.status-live { color: #0E7A3B; }
+.status-soon { color: var(--slate); }
+.on-night .status-live, .site-header .status-live, .site-footer .status-live, .is-live .status-live, .tile-dark .status-live { color: #7BE3A6; }
+.on-night .status-soon, .site-header .status-soon, .site-footer .status-soon, .is-live .status-soon { color: var(--on-night-muted); }
+:root[data-theme="dark"] .status-live { color: #7BE3A6; background: transparent; }
+:root[data-theme="dark"] .status-soon { color: var(--slate); background: transparent; }
+.eyebrow { padding: 0 !important; border: 0 !important; background: none !important; gap: 12px; font-size: 0.9375rem; }
+.plan-badge { background: transparent; border: 1px solid var(--rule-strong); color: var(--slate); font-weight: 600; }
+.plan.is-featured .plan-badge, .tier-mini.is-featured .plan-badge { border: 0; }
+.res-tag { background: transparent; border: 1px solid var(--rule-strong); color: var(--slate); font-weight: 600; }
+:root[data-theme="dark"] .res-tag, :root[data-theme="dark"] .plan-badge { background: transparent; color: var(--slate); }
+:root[data-theme="dark"] .plan.is-featured .plan-badge { color: #fff; }
+
+/* Cards: hairline border, no resting shadow, one radius */
+.tile, .product-card, .plan, .res-card, .tier-mini, .testi, .calc, .form, .panel, .tour-tab, .ba, .compare-scroll { border-radius: 18px; box-shadow: none; }
+.plan.is-featured, .tier-mini.is-featured, .ba-after { box-shadow: 0 24px 60px -44px rgba(52, 84, 240, .55); }
+.tile:hover, a.product-card:hover, .tier-mini:hover, .res-card:hover { box-shadow: none; border-color: var(--signal); transform: translateY(-2px); }
+:root[data-theme="dark"] .plan, :root[data-theme="dark"] .calc, :root[data-theme="dark"] .panel, :root[data-theme="dark"] .form { box-shadow: none; }
+
+/* Hero product: flatter, calmer */
+.hp-window { transform: perspective(1600px) rotateY(-4deg) rotateX(1deg); box-shadow: 0 40px 80px -36px rgba(0, 0, 0, .65), 0 0 60px -20px rgba(1, 119, 249, .3); }
+.hero-assure a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .3); text-underline-offset: 3px; }
+.hero-assure a:hover { text-decoration-color: currentColor; }
+
+/* Preview tip: plain line, no pill */
+.preview-tip { display: flex; align-items: flex-start; gap: 12px; margin-top: 20px; padding: 0; border: 0; background: none; border-radius: 0; color: var(--on-night-muted); font-size: 0.9375rem; max-width: 36rem; }
+.preview-tip .tip-dot { margin-top: .5em; }
+.preview-tip strong { color: #fff; }
+
+/* Suite section: one calm list + orbit */
+.suite-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.suite-grid h2 { margin-top: 14px; }
+.suite-lead { margin-top: 18px; color: var(--slate); max-width: 34rem; }
+.suite-list { margin-top: 32px; border-top: 1px solid var(--rule); }
+.suite-list a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--rule); text-decoration: none; transition: background-color .2s ease, padding .25s var(--ease); }
+.suite-list a:hover { padding-left: 12px; background: var(--mist); }
+.sl-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--rule-strong); }
+.sl-dot.live { background: #1FB86B; box-shadow: 0 0 0 4px rgba(31, 184, 107, .18); }
+.sl-main { display: grid; gap: 1px; }
+.sl-main strong { font-size: 1.0625rem; font-weight: 620; }
+.sl-main span { color: var(--slate); font-size: 0.9375rem; }
+.sl-state { font-size: 0.8125rem; font-weight: 600; color: var(--slate); white-space: nowrap; }
+.sl-state.live { color: #0E7A3B; }
+:root[data-theme="dark"] .sl-state.live { color: #7BE3A6; }
+.connect-orbit { border-radius: 24px; }
+@media (max-width: 900px) { .suite-grid { grid-template-columns: minmax(0, 1fr); } .sl-state { display: none; } }
+
+/* Testimonials: lighter */
+.testi blockquote p { font-size: 1.0625rem; }
+.testi-mark { width: 24px; height: 24px; opacity: .5; }
+
+/* Footer, nav: less shouting */
+.footer-col h2 { font-weight: 600; opacity: .9; }
