@@ -47,7 +47,8 @@ def file_hash(url):
     p = os.path.join(ROOT, url.lstrip('/').split('?')[0].replace('/', os.sep))
     if not os.path.exists(p):
         return None
-    return hashlib.md5(open(p, 'rb').read()).hexdigest()[:8]
+    data = open(p, 'rb').read().replace(bytes([13, 10]), bytes([10]))  # same hash on Windows and Linux checkouts
+    return hashlib.md5(data).hexdigest()[:8]
 
 
 def bust(s):
