@@ -71,6 +71,63 @@
     });
   }
 
+  /* ---------- Theme toggle (light / dark, remembered on this device only) ---------- */
+  var themeBtn = document.querySelector('[data-theme-toggle]');
+  function currentTheme() {
+    return doc.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function paintTheme() {
+    if (!themeBtn) return;
+    var dark = currentTheme() === 'dark';
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    themeBtn.setAttribute('aria-pressed', String(dark));
+  }
+  if (themeBtn) {
+    paintTheme();
+    themeBtn.addEventListener('click', function () {
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      doc.setAttribute('data-theme', next);
+      try { localStorage.setItem('onjaal-theme', next); } catch (e) { /* storage unavailable: choice lasts for this page view */ }
+      paintTheme();
+    });
+  }
+
+  /* ---------- Product tour tabs ---------- */
+  document.querySelectorAll('[data-tour]').forEach(function (tour) {
+    var tabs = Array.prototype.slice.call(tour.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') n = tabs[0];
+        else if (e.key === 'End') n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+  });
+
+  /* ---------- Sticky "Request a demo" bar on small screens ---------- */
+  var sticky = document.querySelector('[data-sticky-cta]');
+  if (sticky && 'IntersectionObserver' in window && !document.getElementById('demo-form')) {
+    var anchor = document.querySelector('.hero, .page-hero');
+    var cta = document.querySelector('.cta-band');
+    var pastHero = false, atCta = false;
+    function paintSticky() { sticky.classList.toggle('is-shown', pastHero && !atCta); }
+    if (anchor) new IntersectionObserver(function (en) { pastHero = !en[0].isIntersecting; paintSticky(); }).observe(anchor);
+    if (cta) new IntersectionObserver(function (en) { atCta = en[0].isIntersecting; paintSticky(); }).observe(cta);
+  }
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 
@@ -80,10 +137,21 @@
 
   // Preselect the area of interest from links such as /contact/?interest=crm
   var interest = new URLSearchParams(location.search).get('interest');
-  var map = { hrms: 'HRMS / employee management', pricing: 'Implementation and pricing', biometric: 'Biometric integration',
+  var map = { hrms: 'HRMS / employee management', pricing: 'Implementation and pricing',
+    free: 'Free plan (up to 5 employees)', standard: 'Standard plan', premium: 'Premium plan', enterprise: 'Enterprise (custom)', security: 'Security and data questions', biometric: 'Biometric integration',
     crm: 'Onjaal CRM (early access)', erp: 'Onjaal ERP (early access)', accounts: 'Onjaal Accounts (early access)' };
   var need = document.getElementById('need');
   if (interest && need && map[interest]) need.value = map[interest];
+
+  // Free-plan visitors get matching wording on the title and the button
+  if (interest === 'free') {
+    var title = document.getElementById('demo-title');
+    var submit = document.getElementById('submit-btn');
+    if (title) title.textContent = 'Request free access';
+    if (submit) submit.textContent = 'Request free access';
+    var subj = form.querySelector('[name="_subject"]');
+    if (subj) subj.value = 'New Onjaal HRMS free plan request';
+  }
 
   // Preselect the team-size band from /contact/?users=120 (set by the pricing estimator)
   var users = parseInt(new URLSearchParams(location.search).get('users'), 10);
