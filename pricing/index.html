@@ -20,6 +20,9 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Onjaal logo with the tagline Simpler HR. Stronger Teams.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pricing — Onjaal HRMS from ₹59 per user per month | Onjaal">
+<meta name="twitter:description" content="Transparent Onjaal HRMS pricing for a 150-user team: ₹1,06,200 a year plus ₹60,000 one-time implementation. Optional biometric integration.">
+<meta name="twitter:image" content="https://onjaal.com/assets/brand/og-image.png">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/brand/favicon-96.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -42,6 +45,80 @@
       "position": 2,
       "name": "Pricing",
       "item": "https://onjaal.com/pricing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the annual subscription include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ₹1,06,200 annual subscription covers the Onjaal HRMS workspace for 150 users, which works out to ₹59 per user per month. It includes core HR workflows: employee and leave management, attendance and approvals, and HR documentation and reporting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is covered by the ₹60,000 implementation fee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It’s a one-time starting scope: initial setup and configuration, aligning workflows and requirements with your team, data preparation guidance, and user onboarding and handover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Our team isn’t exactly 150 people. Can we still enquire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The pricing shown is indicative for a 150-user deployment. Share your team size in the enquiry form, and final scope and commercial terms will be confirmed in a written proposal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it work with our biometric attendance device?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Biometric integration is optional and costs ₹15,000 one-time. Whether it’s possible depends on your device and its API compatibility, so the scope is confirmed before any commitment. Mentioning your device make and model in your enquiry helps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do we pay after the first year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From year two, the subscription is ₹1,06,200 per year, subject to renewal terms. Implementation and biometric integration are one-time charges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after we send an enquiry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our team will review your enquiry and get back to you. The details you share help us prepare a more relevant conversation and demo."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Onjaal HRMS",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://onjaal.com/products/hrms/",
+      "offers": {
+        "@type": "Offer",
+        "price": "59",
+        "priceCurrency": "INR",
+        "description": "Per user per month, billed yearly. One-time implementation of ₹60,000 for a 150-user deployment; taxes confirmed in the written proposal.",
+        "url": "https://onjaal.com/pricing/"
+      }
     }
   ]
 }
@@ -89,9 +166,9 @@
   <div class="glow" aria-hidden="true"></div><div class="grid-lines" aria-hidden="true"></div>
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Pricing</span></li></ol></nav>
-    <div class="pricing-grid" style="margin-top:22px">
+    <div class="pricing-grid">
       <div class="pricing-copy">
-        <h1 id="page-title" style="margin-top:0">Pricing you can see before the first call.</h1>
+        <h1 id="page-title">Pricing you can see before the first call.</h1>
         <p class="lead">Indicative pricing for a 150-user deployment of Onjaal HRMS. Final scope, applicable taxes, integrations and commercial terms are confirmed in a written proposal before any commitment.</p>
         <div class="actions"><a class="btn btn-primary btn-lg" href="/contact/?interest=pricing">Ask for a written proposal <svg class="arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
       </div>
@@ -135,6 +212,39 @@
   </div>
 </section>
 
+<section class="section section-mist" id="estimator" aria-labelledby="calc-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Estimate your cost</span>
+      <h2 id="calc-title">Size it for your team.</h2>
+      <p>Move the slider to see an indicative annual cost. Implementation is shown at the published 150-user figure; your written proposal confirms the final scope.</p>
+    </div>
+    <div class="calc" data-reveal>
+      <div class="calc-controls">
+        <div class="calc-row">
+          <label for="calc-range"><span>Team size</span><output id="calc-users-out" for="calc-range calc-users">150 users</output></label>
+          <input id="calc-range" type="range" min="1" max="500" step="1" value="150">
+        </div>
+        <div class="calc-row">
+          <div class="calc-label"><label for="calc-users">Exact number of users</label></div>
+          <div class="calc-users"><input id="calc-users" type="number" min="1" max="1000" value="150" inputmode="numeric"><span>users (up to 1,000)</span></div>
+        </div>
+        <label class="calc-check"><input id="calc-bio" type="checkbox"><span>Add biometric integration<small>One-time ₹15,000, subject to device/API compatibility.</small></span></label>
+      </div>
+      <div class="calc-result" aria-live="polite">
+        <dl>
+          <div><dt>Per month (₹59 per user)</dt><dd id="calc-monthly">₹8,850</dd></div>
+          <div><dt>Subscription, billed yearly</dt><dd id="calc-yearly">₹1,06,200</dd></div>
+          <div><dt>One-time setup</dt><dd id="calc-onetime">₹60,000</dd></div>
+        </dl>
+        <p class="calc-total"><span>First-year total</span><strong id="calc-first">₹1,66,200</strong></p>
+        <p class="calc-note">From year two: <strong id="calc-renew">₹1,06,200</strong> per year. Applicable taxes are confirmed in your written proposal.</p>
+        <a class="btn btn-primary" id="calc-cta" href="/contact/?interest=pricing">Get this as a written proposal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" aria-labelledby="included-title">
   <div class="wrap">
     <div class="section-head" data-reveal><span class="kicker">What you get</span><h2 id="included-title">One recurring subscription. One-time setup.</h2>
@@ -142,7 +252,7 @@
     <div class="bento">
       <article class="tile wide" data-reveal><span class="status status-live">Recurring</span><h3>The subscription includes</h3>
         <ul class="checks"><li>Core HR workflows</li><li>Employee and leave management</li><li>Attendance and approvals</li><li>HR documentation and reporting</li></ul></article>
-      <article class="tile wide" data-reveal style="--d:.08s"><span class="status status-soon">One-time</span><h3>Implementation includes</h3>
+      <article class="tile wide" data-reveal data-d="1"><span class="status status-soon">One-time</span><h3>Implementation includes</h3>
         <ul class="checks"><li>Initial setup and configuration</li><li>Workflow and requirements alignment</li><li>Data preparation guidance</li><li>User onboarding and handover</li></ul></article>
     </div>
   </div>
@@ -188,5 +298,6 @@
   </div>
 </footer>
 <script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/pricing.js" defer></script>
 </body>
 </html>
