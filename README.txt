@@ -1,46 +1,67 @@
-ONJAAL WEBSITE (onjaal.com)
+ONJAAL WEBSITE (onjaal.com) — version 3, multi-page
 
 Static site published with GitHub Pages from the root of the main branch.
-Custom domain: onjaal.com (see CNAME). No build step, framework or database.
+Custom domain: onjaal.com (see CNAME). No build step, framework, database
+or third-party scripts. Every page works without JavaScript.
 
-FILES
-- index.html ............ the homepage (Onjaal + Onjaal HRMS)
-- 404.html .............. page shown for broken links (not indexed)
-- robots.txt ............ lets search engines crawl the site; points to the sitemap
-- sitemap.xml ........... lists the public pages (currently only the homepage)
-- CNAME ................. custom domain for GitHub Pages; do not edit
-- favicon.ico, apple-touch-icon.png ... browser and phone icons
-- assets/css/site.css ... all styles
-- assets/js/site.js ..... mobile menu, footer year, form validation messages
-- assets/fonts/ ......... self-hosted Schibsted Grotesk (SIL Open Font License, see OFL.txt)
-- assets/brand/ ......... logo files made from the supplied logo
-    onjaal-logo-original.png  the original file, unchanged
-    onjaal-logo-full.*        full logo with tagline, transparent background (schema, footer on large screens)
-    onjaal-logo-full-460.*    smaller copy of the full logo used in the footer
-    onjaal-logo.*             logo without the tagline line (header on high-density screens)
-    onjaal-logo-330.*         smaller copy of the header logo
-    onjaal-mark.png           symbol only, full size (source for the favicons)
-    onjaal-mark-48.png        small symbol used inside the product illustration
-    og-image.png              1200x630 image used when the link is shared
-    favicon-96.png            icon for search results and browsers
+PAGES (each folder holds an index.html, giving clean addresses)
+- /                 index.html ............ home
+- /products/        products/index.html ... the Onjaal suite
+- /products/hrms/   products/hrms/index.html  Onjaal HRMS (with interactive preview)
+- /pricing/         pricing/index.html
+- /about/           about/index.html
+- /contact/         contact/index.html .... the enquiry form
+- /privacy/         privacy/index.html .... privacy policy (have a lawyer review)
+- /terms/           terms/index.html ...... terms of use (have a lawyer review)
+- 404.html ........................... page shown for broken links (not indexed)
 
-ENQUIRY FORM
-The form posts to FormSubmit (https://formsubmit.co/tech@onjaal.com) and is
-delivering enquiries. Its action, method, field names, hidden fields
-(_subject, _template, _captcha, _next) and the _honey spam trap must stay
-exactly as they are unless you intend to change how enquiries are delivered.
-Do not send test enquiries casually: each one reaches the real inbox.
+The header and footer are repeated inside every page. If you change a menu
+link or footer line, change it in all 9 HTML files.
 
-PRICING SHOWN ON THE SITE (indicative, 150 users)
-- Subscription: Rs 1,06,200 per year (Rs 59 per user per month)
-- Implementation: Rs 60,000 one-time
-- Year one: Rs 1,66,200
-- Optional biometric integration: Rs 15,000 one-time, subject to device/API compatibility
-- Year one with biometric integration: Rs 1,81,200
-- From year two: Rs 1,06,200 per year, subject to renewal terms
-Applicable taxes are confirmed in the written proposal. If you change a price,
-update index.html in the pricing table, the hero line and the FAQ answers.
+OTHER ROOT FILES
+- robots.txt, sitemap.xml (8 public pages), CNAME (do not edit),
+  favicon.ico, apple-touch-icon.png
 
-PUBLISHING
-Commit and push to the main branch. GitHub Pages republishes automatically,
-usually within a few minutes.
+ASSETS
+- assets/css/site.css ........ design system for all pages
+- assets/css/preview.css ..... interactive HRMS preview styles
+- assets/js/site.js .......... menu, Products dropdown, scroll reveal, form checks
+- assets/js/preview/ ......... interactive HRMS preview (sample data, drawing, behaviour)
+- assets/fonts/ .............. Schibsted Grotesk, self-hosted (SIL Open Font License)
+- assets/brand/ .............. logo files made from the supplied Onjaal logo
+    onjaal-logo-original.png        the original file, unchanged
+    onjaal-logo-light*.png/webp     white wordmark for dark backgrounds (header)
+    onjaal-logo-full-light-460.*    full logo with tagline for dark backgrounds (footer)
+    onjaal-logo*.png/webp           original colours for light backgrounds
+    onjaal-mark*.png                symbol only (favicons, preview, home orbit)
+    og-image.png                    1200x630 image used when links are shared
+
+ENQUIRY FORM (contact page)
+Posts to FormSubmit (https://formsubmit.co/tech@onjaal.com). Action, method,
+field names, hidden fields (_subject, _template, _captcha, _next) and the
+_honey spam trap are unchanged. Three options were added to "What are you
+exploring?": Onjaal CRM / ERP / Accounts (early access). Links such as
+/contact/?interest=crm preselect the right option.
+
+INTERACTIVE HRMS PREVIEW
+Runs only in the visitor's browser on fictional sample data. No network
+requests, nothing saved, separate from the enquiry form. Edit the sample
+people and leave requests in assets/js/preview/preview-data.js.
+
+PRICING SHOWN (indicative, 150 users)
+Subscription Rs 1,06,200/year (Rs 59 per user per month) | Implementation
+Rs 60,000 one-time | First-year total Rs 1,66,200 | Optional biometric
+Rs 15,000 one-time | First-year total with biometric Rs 1,81,200 | From year
+two Rs 1,06,200/year. If a price changes, update: pricing/index.html,
+index.html, products/hrms/index.html and the FAQ answers in those pages.
+
+PUBLISHING (GitHub website only)
+1. Unzip the package.
+2. github.com/abhayak47/website > Add file > Upload files.
+3. Select EVERYTHING inside the unzipped folder (files and folders: assets,
+   products, pricing, about, contact, privacy, terms) and drag it in.
+   Use Chrome or Edge so folders keep their structure.
+4. Commit directly to main.
+5. Check that "products", "pricing" etc. appear as folders at the top level.
+6. Wait for the green tick in the Actions tab, then open https://onjaal.com
+   and press Ctrl+F5.
