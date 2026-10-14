@@ -19,6 +19,8 @@ jobs:
           git diff --exit-code -- . ':!sitemap.xml' || (echo "Run python tools/sync_layout.py and commit the result" && exit 1)
       - name: Links, structured data, SEO tags, sitemap
         run: python tools/check_site.py
+      - name: SEO and structured-data consistency
+        run: python tools/check_seo.py
 
   lighthouse:
     runs-on: ubuntu-latest

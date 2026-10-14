@@ -179,7 +179,7 @@ def guide_page(g):
     related = [x for x in GUIDES if x['slug'] != g['slug']][:3]
     rel = ''.join('<li><a href="/resources/%s/">%s</a></li>' % (x['slug'], e(x['title'])) for x in related)
     ld = [{"@type": "Article", "headline": g['title'], "description": g['desc'], "datePublished": DATE, "dateModified": DATE,
-           "author": {"@type": "Organization", "name": "Onjaal"}, "publisher": {"@type": "Organization", "name": "Onjaal", "url": "https://onjaal.com/"},
+           "author": {"@id": "https://onjaal.com/#organization"}, "publisher": {"@id": "https://onjaal.com/#organization"},
            "mainEntityOfPage": "https://onjaal.com/resources/%s/" % g['slug']}]
     main = hero(e(g['title']), e(g['intro']),
                 '<li><a href="/">Home</a></li><li><a href="/resources/">Resources</a></li><li><span aria-current="page">%s</span></li>' % e(g['tag']),
@@ -208,6 +208,7 @@ hub = hero('Practical guides for people teams.', 'Short, plain-English guides fo
            '<li><a href="/">Home</a></li><li><span aria-current="page">Resources</span></li>') + f'''
 <section class="section">
   <div class="wrap">
+    <h2 class="sr-only">All guides</h2>
     <div class="res-grid">{cards}</div>
     <p class="fine">Guides are general information, not legal advice.</p>
   </div>

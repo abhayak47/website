@@ -1,0 +1,26 @@
+# Onjaal
+
+> Onjaal builds business software for growing businesses in India, starting with Onjaal HRMS: employee records, attendance, leave and approvals in one workspace. Onjaal HRMS is available now. Onjaal CRM, ERP and Accounts are in development, with no announced release dates.
+
+This file is a plain-language guide to the public pages of onjaal.com. It is informational only. Published prices exclude applicable taxes. Statutory payroll and compliance scope is confirmed with the company during a demo. Contact: tech@onjaal.com
+
+## Product
+- [Onjaal HRMS](https://onjaal.com/products/hrms/): what the HR product does, its FAQ, and an interactive preview that uses fictional sample data
+- [The Onjaal suite](https://onjaal.com/products/): the available product and the products in development
+
+## Pricing and contact
+- [Pricing](https://onjaal.com/pricing/): published plans (Free, Standard, Premium, Enterprise), one-time services and an estimator
+- [Contact](https://onjaal.com/contact/): request free access, a demo or a proposal
+
+## Company and trust
+- [About](https://onjaal.com/about/): approach, principles and roadmap
+- [Trust and data](https://onjaal.com/security/): what the website and preview do with data, and questions answered in writing before purchase
+- [Privacy Policy](https://onjaal.com/privacy/)
+- [Terms of Use](https://onjaal.com/terms/)
+
+## Guides (general information, not legal advice)
+- [HRMS software for Indian SMEs: what to look for](https://onjaal.com/resources/hrms-for-indian-smes/)
+- [Leave and attendance management: why they belong together](https://onjaal.com/resources/leave-and-attendance-management/)
+- [A leave policy checklist for growing teams](https://onjaal.com/resources/leave-policy-checklist/)
+- [An attendance policy checklist for Indian SMEs](https://onjaal.com/resources/attendance-policy-checklist/)
+- [Choosing HR software: 10 questions to ask](https://onjaal.com/resources/choosing-hr-software/)

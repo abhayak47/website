@@ -128,6 +128,7 @@ MAIN = '''<main id="main">
 
 <section class="plans-stage" aria-label="Plans">
   <div class="wrap">
+    <h2 class="sr-only">Plans</h2>
     <div class="plans">__CARDS__</div>
     <p class="plans-note">Free plan: up to 5 employees. Paid plans are billed per user. Optional one-time services are listed below. Applicable taxes are confirmed in your written proposal.</p>
   </div>
@@ -230,8 +231,9 @@ def ld():
                        "url": "https://onjaal.com/pricing/",
                        "priceSpecification": {"@type": "UnitPriceSpecification", "price": str(p['annual']), "priceCurrency": "INR",
                                               "unitText": "user per month, billed yearly"}})
-    app = {"@type": "SoftwareApplication", "name": "Onjaal HRMS", "applicationCategory": "BusinessApplication",
-           "operatingSystem": "Web", "url": "https://onjaal.com/products/hrms/", "offers": offers}
+    app = {"@type": "SoftwareApplication", "@id": "https://onjaal.com/products/hrms/#software", "name": "Onjaal HRMS",
+           "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://onjaal.com/products/hrms/",
+           "publisher": {"@id": "https://onjaal.com/#organization"}, "offers": offers}
     crumbs = {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://onjaal.com/"},
         {"@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://onjaal.com/pricing/"}]}

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /docs/
+Disallow: /tools/
+Disallow: /.github/
 
 Sitemap: https://onjaal.com/sitemap.xml

@@ -7,7 +7,7 @@ Static marketing site for [onjaal.com](https://onjaal.com), served by GitHub Pag
 - `assets/css/site.css` (global, includes the dark theme), `assets/css/preview.css` (HRMS preview)
 - `assets/js/site.js` (nav, theme toggle, product tour, sticky CTA, enquiry form), `assets/js/pricing.js` (billing toggle and estimator), `assets/js/preview/` (interactive HRMS demo with fictional data)
 - `sitemap.xml`, `robots.txt`
-- `tools/` small Python helpers: `sync_layout.py` (shared header/footer, share images, cache-busting, sitemap dates), `build_pricing.py`, `build_resources.py`, `build_og.py` (needs Pillow), `check_site.py` (quality gate)
+- `tools/` small Python helpers: `sync_layout.py` (shared header/footer, share images, cache-busting, sitemap dates), `build_pricing.py`, `build_resources.py`, `build_og.py` (needs Pillow), `check_site.py` and `check_seo.py` (quality gates)
 - `site.webmanifest`, `.well-known/security.txt`, `.nojekyll` (lets GitHub Pages serve dot-folders), `lighthouserc.json`, `.github/workflows/checks.yml`
 
 ## Editing
@@ -21,7 +21,7 @@ Static marketing site for [onjaal.com](https://onjaal.com), served by GitHub Pag
 Posts via FormSubmit to `tech@onjaal.com`, with an in-page success state. If JavaScript fails it falls back to a normal POST that redirects to `/thanks/`. FormSubmit needs a one-time email activation for the address.
 
 ## Quality checks
-`python tools/check_site.py` validates links, anchors, JSON-LD, titles/descriptions, canonicals, share images and the sitemap. The same check plus Lighthouse CI runs on every pull request (`.github/workflows/checks.yml`).
+`python tools/check_seo.py` guards canonical URLs, sitemap vs robots, heading order and structured-data consistency. Reports and setup guides are in `docs/`. `python tools/check_site.py` validates links, anchors, JSON-LD, titles/descriptions, canonicals, share images and the sitemap. The same check plus Lighthouse CI runs on every pull request (`.github/workflows/checks.yml`).
 
 ## Analytics (off by default)
 `assets/js/consent.js` contains a consent-aware Google Analytics 4 loader. While `GA4_ID` is empty it does nothing. To enable: paste the Measurement ID, then update `privacy/index.html` and `security/index.html` (they currently state there is no analytics), and test in GA4 DebugView that nothing loads before a visitor accepts.
