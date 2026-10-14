@@ -1161,3 +1161,19 @@ h3 { font-weight: 620; letter-spacing: -0.01em; }
 
 /* Footer, nav: less shouting */
 .footer-col h2 { font-weight: 600; opacity: .9; }
+
+/* ---------- Consent banner (only rendered when analytics is enabled in consent.js) ---------- */
+.consent { position: fixed; z-index: 70; left: 16px; right: 16px; bottom: 16px; max-width: 640px; margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; padding: 16px 20px; border: 1px solid var(--rule-strong); border-radius: 16px; background: var(--paper); color: var(--ink); box-shadow: 0 24px 60px -24px rgba(1, 18, 46, .45); font-size: 0.9375rem; }
+.consent p { flex: 1 1 280px; margin: 0; color: var(--slate); }
+.consent a { color: var(--signal-text); font-weight: 600; }
+.consent-actions { display: flex; gap: 10px; margin-left: auto; }
+.consent .btn { min-height: 42px; padding: 9px 20px; }
+@media (max-width: 760px) { .consent { bottom: 84px; } }
+
+/* ---------- Article extras ---------- */
+.article p { color: var(--slate); font-size: var(--step-0); line-height: 1.7; margin: 0 0 16px; }
+.article .checklist { margin-bottom: 8px; }
+.related { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.related h2 { margin: 0 0 14px; font-size: 1.125rem; }
+.related ul { display: grid; gap: 10px; }
+.related a { color: var(--signal-text); font-weight: 600; text-underline-offset: 3px; }
