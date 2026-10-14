@@ -85,6 +85,16 @@
   var need = document.getElementById('need');
   if (interest && need && map[interest]) need.value = map[interest];
 
+  // Preselect the team-size band from /contact/?users=120 (set by the pricing estimator)
+  var users = parseInt(new URLSearchParams(location.search).get('users'), 10);
+  var size = document.getElementById('employees');
+  if (users > 0 && size) {
+    var bands = [[25, 0], [50, 1], [100, 2], [150, 3], [300, 4]];
+    var idx = 5;
+    for (var i = 0; i < bands.length; i++) { if (users <= bands[i][0]) { idx = bands[i][1]; break; } }
+    size.selectedIndex = idx + 1;
+  }
+
   var button = document.getElementById('submit-btn');
   var status = document.getElementById('form-status');
   var fields = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required]'));
@@ -114,6 +124,7 @@
       if (field.value.trim() !== '' || field.getAttribute('aria-invalid') === 'true') showError(field);
     });
   });
+  var ENDPOINT = 'https://formsubmit.co/ajax/tech@onjaal.com';
   form.addEventListener('submit', function (e) {
     var firstInvalid = null;
     fields.forEach(function (field) {
@@ -122,12 +133,37 @@
     });
     if (firstInvalid) {
       e.preventDefault();
+      status.classList.remove('is-error');
       status.textContent = 'Please check the highlighted fields.';
       firstInvalid.focus();
       return;
     }
-    status.textContent = 'Sending your enquiry. You’ll be taken to a short confirmation step.';
+    // Enhanced path: send in the background and confirm on this page.
+    // If anything goes wrong, fall back to the normal form post.
+    if (!window.fetch || !window.FormData) {
+      status.textContent = 'Sending your enquiry. You’ll be taken to a short confirmation step.';
+      button.disabled = true;
+      return;
+    }
+    e.preventDefault();
+    var honey = form.querySelector('[name="_honey"]');
+    if (honey && honey.value) return; // bot: do nothing
     button.disabled = true;
+    status.classList.remove('is-error');
+    status.textContent = 'Sending your enquiry…';
+    fetch(ENDPOINT, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+      .then(function (res) {
+        if (res && (res.success === false || res.success === 'false')) throw new Error('rejected');
+        form.classList.add('is-sent');
+        var done = document.getElementById('form-success');
+        if (done) done.focus();
+      })
+      .catch(function () {
+        status.classList.add('is-error');
+        status.textContent = 'We couldn’t send that just now. Please try again, or email tech@onjaal.com.';
+        button.disabled = false;
+      });
   });
   window.addEventListener('pageshow', function () { button.disabled = false; status.textContent = ''; });
 })();
