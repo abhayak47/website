@@ -26,6 +26,7 @@ OG = {
     '/products/': ('products', 'The Onjaal suite. HRMS today, CRM, ERP and Accounts in development.'),
     '/about/': ('about', 'About Onjaal. Software that makes work clearer.'),
     '/contact/': ('contact', 'Start free or request an Onjaal demo.'),
+    '/support/': ('contact', 'Onjaal help and support. How to reach the team.'),
     '/security/': ('security', 'Onjaal trust and data. Plain answers about your information.'),
 }
 

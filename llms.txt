@@ -11,6 +11,7 @@ This file is a plain-language guide to the public pages of onjaal.com. It is inf
 ## Pricing and contact
 - [Pricing](https://onjaal.com/pricing/): published plans (Free, Standard, Premium, Enterprise), one-time services and an estimator
 - [Contact](https://onjaal.com/contact/): request free access, a demo or a proposal
+- [Help and support](https://onjaal.com/support/): how to reach the team and where to find answers
 
 ## Company and trust
 - [About](https://onjaal.com/about/): approach, principles and roadmap

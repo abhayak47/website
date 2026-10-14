@@ -44,7 +44,7 @@ Login, registration and dashboards: **not applicable**. This repository contains
 
 ## 4. Remaining risks
 
-1. **Invented testimonials are still live** (home and About). Highest risk; needs a decision.
+1. ~~Invented testimonials~~ removed 2026-10-15. See `docs/ai-search-misclassification-report.md` for the related public-signal risks (competing old site, contradictory README).
 2. **Unconfirmed pricing and plan features** are published and in `Offer` markup.
 3. **Unconfirmed capability claims** (see `brand-information-needed.md`, section A).
 4. FormSubmit delivery is unverified until activated; the AJAX path has honeypot-only spam protection.
@@ -53,7 +53,7 @@ Login, registration and dashboards: **not applicable**. This repository contains
 
 ## 5. Prioritised next steps
 
-1. Decide on the testimonials: supply real, permissioned quotes or remove them.
+1. Merge the branch so the testimonial removal and the new support page go live; retire the old `abhayak47.github.io/onjaal/` copy.
 2. Confirm pricing, the Free plan and feature-by-plan allocation; mark each feature Live / In development / Roadmap.
 3. Merge, enable GitHub Pages with HTTPS, add the `www` CNAME, then verify live URLs and the 404 status.
 4. Verify Search Console (DNS TXT) and Bing, submit `sitemap.xml`, request indexing for the five key pages.
