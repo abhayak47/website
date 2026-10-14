@@ -224,6 +224,7 @@
       .then(function (res) {
         if (res && (res.success === false || res.success === 'false')) throw new Error('rejected');
         form.classList.add('is-sent');
+        if (window.onjaalTrack) window.onjaalTrack('generate_lead', { form: 'enquiry' });
         var done = document.getElementById('form-success');
         if (done) done.focus();
       })
