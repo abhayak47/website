@@ -4,7 +4,7 @@ Nothing below has been invented. Each item is either missing from the site or wa
 
 ## A. Must confirm before launch (published claims at risk)
 
-1. **Customer testimonials.** The three quotes on the home and About pages are not from real customers. Provide real quotes with the person's name, role, company and written permission, or approve removing the sections.
+1. **Customer testimonials.** The invented quotes were removed from the site on 2026-10-15. If you have real customers, provide quotes with the person's name, role, company and written permission and they can be added.
 2. **Pricing.** Confirm or correct each of these as currently published:
    - Free plan: up to 5 employees, ₹0. Is it genuinely available, and is access granted through the enquiry form?
    - Standard: ₹59 per user per month on annual billing, ₹71 billed monthly.
@@ -15,7 +15,9 @@ Nothing below has been invented. Each item is either missing from the site or wa
    - Whether prices exclude GST, and whether there is a minimum number of users on paid plans.
 3. **Feature allocation per plan.** For each, mark Live / In development / Roadmap, and which plan includes it: employee records; attendance; leave; approvals; employee self-service; HR documents; standard reports; advanced reporting; payroll-related workflows; biometric integration; priority support; dedicated implementation team; custom workflows and integrations; security review support.
 4. **Other modules.** The brief mentions recruitment, onboarding/offboarding, expenses and performance management. Are any live today? The site currently claims none of them.
-5. **What exactly is live.** Is Onjaal HRMS available to new customers today, or only through assisted onboarding and a demo?
+5. **What exactly is live.** Is Onjaal HRMS available to new customers today, or only through assisted onboarding and a demo? The public GitHub README says "in development" while the site says "Available now"; one of them must change.
+5a. **Product entry point.** Is there a sign-in or app URL customers use? The site has none. If it exists and may be public, say so and a "Sign in" link can be added; if it must stay private, nothing is needed.
+5b. **Support.** Hours, response times and channels beyond tech@onjaal.com, if you want them published on the support page.
 
 ## B. Company identity (needed for trust pages and structured data)
 

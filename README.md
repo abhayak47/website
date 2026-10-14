@@ -3,11 +3,11 @@
 Static marketing site for [onjaal.com](https://onjaal.com), served by GitHub Pages (`CNAME` = `onjaal.com`). No framework and no build step needed to serve it.
 
 ## Structure
-- Pages: `index.html`, `about/`, `products/`, `products/hrms/`, `pricing/`, `security/`, `resources/` (+ guides), `contact/`, `thanks/`, `privacy/`, `terms/`, `404.html`
+- Pages: `index.html`, `about/`, `products/`, `products/hrms/`, `pricing/`, `security/`, `resources/` (+ guides), `support/`, `contact/`, `thanks/`, `privacy/`, `terms/`, `404.html`
 - `assets/css/site.css` (global, includes the dark theme), `assets/css/preview.css` (HRMS preview)
 - `assets/js/site.js` (nav, theme toggle, product tour, sticky CTA, enquiry form), `assets/js/pricing.js` (billing toggle and estimator), `assets/js/preview/` (interactive HRMS demo with fictional data)
 - `sitemap.xml`, `robots.txt`
-- `tools/` small Python helpers: `sync_layout.py` (shared header/footer, share images, cache-busting, sitemap dates), `build_pricing.py`, `build_resources.py`, `build_og.py` (needs Pillow), `check_site.py` and `check_seo.py` (quality gates)
+- `tools/` small Python helpers: `sync_layout.py` (shared header/footer, share images, cache-busting, sitemap dates), `build_pricing.py`, `build_resources.py`, `build_support.py`, `build_og.py` (needs Pillow), `check_site.py` and `check_seo.py` (quality gates)
 - `site.webmanifest`, `.well-known/security.txt`, `.nojekyll` (lets GitHub Pages serve dot-folders), `lighthouserc.json`, `.github/workflows/checks.yml`
 
 ## Editing

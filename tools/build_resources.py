@@ -198,23 +198,29 @@ def guide_page(g):
     write(path, shell(path, g['title'], g['desc'], [('Home', '/'), ('Resources', '/resources/'), (g['title'], path)], main, ld, 'article'))
 
 
-for g in GUIDES:
-    guide_page(g)
 
-cards = ''.join(
-    f'''<a class="res-card" href="/resources/{g['slug']}/" data-reveal><span class="res-tag">{g['tag']}</span><h3>{e(g['title'])}</h3><p>{e(g['desc'])}</p><span class="card-foot">{g['read']} <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>'''
-    for g in GUIDES)
-hub = hero('Practical guides for people teams.', 'Short, plain-English guides for HR in growing Indian businesses. No sign-up needed.',
-           '<li><a href="/">Home</a></li><li><span aria-current="page">Resources</span></li>') + f'''
-<section class="section">
-  <div class="wrap">
-    <h2 class="sr-only">All guides</h2>
-    <div class="res-grid">{cards}</div>
-    <p class="fine">Guides are general information, not legal advice.</p>
-  </div>
-</section>
-''' + cta('Questions we have not covered?', 'Tell us what you are trying to sort out. We may write the next guide about it.', 'Get in touch', '/contact/')
-write('/resources/', shell('/resources/', 'Resources: HR guides and checklists for Indian teams',
-                           'Practical, plain-English HR guides for growing teams in India: choosing an HRMS, leave and attendance management, leave policy and attendance policy checklists.',
-                           [('Home', '/'), ('Resources', '/resources/')], hub))
-print('wrote hub + %d guides' % len(GUIDES))
+def main():
+    for g in GUIDES:
+        guide_page(g)
+
+    cards = ''.join(
+        f'''<a class="res-card" href="/resources/{g['slug']}/" data-reveal><span class="res-tag">{g['tag']}</span><h3>{e(g['title'])}</h3><p>{e(g['desc'])}</p><span class="card-foot">{g['read']} <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>'''
+        for g in GUIDES)
+    hub = hero('Practical guides for people teams.', 'Short, plain-English guides for HR in growing Indian businesses. No sign-up needed.',
+               '<li><a href="/">Home</a></li><li><span aria-current="page">Resources</span></li>') + f'''
+    <section class="section">
+      <div class="wrap">
+        <h2 class="sr-only">All guides</h2>
+        <div class="res-grid">{cards}</div>
+        <p class="fine">Guides are general information, not legal advice.</p>
+      </div>
+    </section>
+    ''' + cta('Questions we have not covered?', 'Tell us what you are trying to sort out. We may write the next guide about it.', 'Get in touch', '/contact/')
+    write('/resources/', shell('/resources/', 'Resources: HR guides and checklists for Indian teams',
+                               'Practical, plain-English HR guides for growing teams in India: choosing an HRMS, leave and attendance management, leave policy and attendance policy checklists.',
+                               [('Home', '/'), ('Resources', '/resources/')], hub))
+    print('wrote hub + %d guides' % len(GUIDES))
+
+
+if __name__ == '__main__':
+    main()

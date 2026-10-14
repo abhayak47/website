@@ -8,7 +8,7 @@ Not possible from source alone: live-production behaviour, indexing status, Sear
 
 | Area | Finding |
 |---|---|
-| Stack | Plain static HTML/CSS/JS. No framework, no bundler, no backend. 17 HTML pages. Python helpers in `tools/` generate the shared header/footer, pricing page and guides |
+| Stack | Plain static HTML/CSS/JS. No framework, no bundler, no backend. 18 HTML pages. Python helpers in `tools/` generate the shared header/footer, pricing page and guides |
 | Rendering | Every page is fully server-delivered HTML. Crawlers get all marketing content without running JavaScript (JavaScript only powers the nav, theme toggle, product tour, pricing estimator, preview and form). No SSR migration is needed |
 | Hosting | GitHub Pages (`CNAME` = `onjaal.com`, `.nojekyll`). Cannot set HTTP headers or server-side redirects |
 | Forms | One enquiry form posting to FormSubmit (`tech@onjaal.com`) with an in-page success state and a `/thanks/` fallback |
@@ -20,10 +20,10 @@ Not possible from source alone: live-production behaviour, indexing status, Sear
 
 ### Critical
 
-**C1. The testimonials are invented.**
+**C1. The testimonials were invented. RESOLVED 2026-10-15: removed from the home and About pages.**
 `index.html` and `about/index.html` show quotes attributed to named people at named kinds of companies (Neha Iyer, Rajesh Agarwal, Farhana Sheikh). None come from real customers. The disclaimer line was removed at the owner's request.
 *Impact:* presenting invented reviews as real can mislead visitors, damages trust if discovered, and may breach consumer-protection rules on fake reviews. It also contradicts this mission's own rule (no invented customers or testimonials).
-*Fix:* replace with real, permissioned quotes, or remove the two sections. Status: **not changed pending owner decision** (it reverses an earlier explicit instruction). Removing is a two-block deletion in each file.
+*Fix:* removed. Re-add only genuine, written-permission testimonials with the person's real name, role and company.
 
 **C2. Pricing tiers and plan features are not confirmed by the business.**
 The original site verifiably published: ₹59 per user per month, ₹60,000 implementation (150 users) and ₹15,000 biometric integration. The Free plan (up to 5 employees), Premium at ₹99, monthly rates (₹71, ₹119), and the feature split between Free / Standard / Premium / Enterprise were proposed in a working session and are not confirmed facts. They appear in visible copy, the comparison table, the estimator, the FAQ and `Offer` structured data.

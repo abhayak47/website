@@ -1176,3 +1176,8 @@ h3 { font-weight: 620; letter-spacing: -0.01em; }
 .related h2 { margin: 0 0 14px; font-size: 1.125rem; }
 .related ul { display: grid; gap: 10px; }
 .related a { color: var(--signal-text); font-weight: 600; text-underline-offset: 3px; }
+
+/* ---------- Support page ---------- */
+.support-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.support-grid .tile { grid-column: auto; }
+@media (max-width: 900px) { .support-grid { grid-template-columns: minmax(0, 1fr); } }
