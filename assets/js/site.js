@@ -128,6 +128,34 @@
     if (cta) new IntersectionObserver(function (en) { atCta = en[0].isIntersecting; paintSticky(); }).observe(cta);
   }
 
+  /* ---------- Interactive preview: load only when it is about to be seen ---------- */
+  var previewMount = document.getElementById('hrms-preview');
+  if (previewMount) {
+    var previewLoaded = false;
+    var loadPreview = function () {
+      if (previewLoaded) return;
+      previewLoaded = true;
+      document.querySelectorAll('link[data-lazy-style]').forEach(function (l) { l.media = 'all'; });
+      var queue = Array.prototype.slice.call(document.querySelectorAll('script[type="text/lazy-script"]'));
+      (function next() {
+        var old = queue.shift();
+        if (!old) return;
+        var s = document.createElement('script');
+        s.src = old.getAttribute('src');
+        s.onload = next;
+        s.onerror = next;
+        document.body.appendChild(s);
+      })();
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries, obs) {
+        if (entries[0].isIntersecting) { obs.disconnect(); loadPreview(); }
+      }, { rootMargin: '900px 0px' }).observe(previewMount);
+    } else {
+      loadPreview();
+    }
+  }
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 

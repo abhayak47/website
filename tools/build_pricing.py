@@ -16,7 +16,7 @@ PLANS = [
          items=['Up to 5 employees', 'Employee records', 'Attendance and leave tracking', 'Employee self-service', 'Email support']),
     dict(id='standard', name='Standard', tag='Most popular', annual=59, monthly=71, unit='per user / month',
          blurb='The full HR workspace for growing teams of 6 or more.', cta='Request a demo', href='/contact/?interest=standard', style='btn-primary', featured=True,
-         items=['Everything in Free', 'Unlimited employees', 'Approval workflows', 'HR documents and standard reports', 'Payroll-related process support', 'Optional guided implementation']),
+         items=['Everything in Free', 'For teams of 6 or more', 'Approval workflows', 'HR documents and standard reports', 'Payroll-related process support', 'Optional guided implementation']),
     dict(id='premium', name='Premium', tag='For scaling teams', annual=99, monthly=119, unit='per user / month',
          blurb='More depth, integrations and faster support as you scale.', cta='Request a demo', href='/contact/?interest=premium', style='btn-ink',
          items=['Everything in Standard', 'Biometric attendance integration included', 'Advanced reporting', 'Priority support', 'Optional guided implementation']),
@@ -28,7 +28,7 @@ PLANS = [
 # (feature, free, standard, premium, enterprise); True = included, False = not, str = note
 FEATURES = [
     ('People', [
-        ('Employees', 'Up to 5', 'Unlimited', 'Unlimited', 'Unlimited'),
+        ('Employees', 'Up to 5', '6 or more', '6 or more', 'Any size'),
         ('Employee records and profiles', True, True, True, True),
         ('Employee self-service', True, True, True, True),
         ('HR documents', False, True, True, True),
@@ -60,6 +60,7 @@ FAQ = [
     ('How does annual billing work?', 'Annual plans are billed once a year at ₹59 (Standard) or ₹99 (Premium) per user per month. Billed monthly, the rates are ₹71 and ₹119. Annual billing saves about 17%.'),
     ('What does guided implementation include?', 'It is an optional one-time service from ₹60,000 for a 150-user deployment: initial setup and configuration, workflow and requirements alignment, data preparation guidance, and user onboarding and handover. Smaller or larger teams are scoped in your proposal.'),
     ('Will it work with our biometric attendance device?', 'Biometric integration is ₹15,000 one-time on Standard and included on Premium. Whether it is possible depends on your device and its API compatibility, so scope is confirmed before any commitment. Mentioning your device make and model in your enquiry helps.'),
+    ('Can we change plans, renew or cancel, and what about refunds?', 'Plan changes, renewals, cancellation and refund terms are confirmed in your written proposal before you commit, so you know them in advance. Moving from Free to Standard happens when you grow beyond 5 employees.'),
     ('Are taxes included?', 'No. Prices are in Indian rupees and exclude applicable taxes, which are confirmed in your written proposal.'),
     ('What should a larger organisation choose?', 'Enterprise is scoped around your workflows, integrations, rollout and contract. We recommend it from roughly 200 users, or sooner if you need custom integrations. Send an enquiry and we will prepare a proposal.'),
     ('What happens after we send an enquiry?', 'Our team will review your enquiry and get back to you. The details you share help us prepare a more relevant conversation and demo.'),
@@ -73,7 +74,8 @@ def price_html(p):
         return '<p class="plan-price"><span class="amt">₹0</span></p><p class="plan-unit">%s</p>' % p['unit']
     return ('<p class="plan-price"><span class="amt" data-annual="%d" data-monthly="%d">₹%d</span></p>'
             '<p class="plan-unit"><span data-unit-annual>%s, billed yearly</span><span data-unit-monthly hidden>%s, billed monthly</span></p>'
-            % (p['annual'], p['monthly'], p['annual'], p['unit'], p['unit']))
+            '<p class="plan-alt">Annual: ₹%s per user a year. Monthly: ₹%d per user a month. Excludes applicable taxes.</p>'
+            % (p['annual'], p['monthly'], p['annual'], p['unit'], p['unit'], '{:,}'.format(p['annual'] * 12), p['monthly']))
 
 
 def card(p):
@@ -203,7 +205,8 @@ MAIN = '''<main id="main">
 <section class="section section-mist" id="faq" aria-labelledby="faq-title">
   <div class="wrap faq-grid">
     <div class="faq-head"><h2 id="faq-title">Pricing questions</h2>
-      <p>Can’t find your answer? Email <a href="mailto:tech@onjaal.com">tech@onjaal.com</a>.</p></div>
+      <p>Can’t find your answer? Email <a href="mailto:tech@onjaal.com">tech@onjaal.com</a>.</p>
+      <p>New to HRMS pricing? Read <a href="/resources/choosing-hr-software/">10 questions to ask any HR software vendor</a>.</p></div>
     <div class="faq-list">__FAQ__</div>
   </div>
 </section>

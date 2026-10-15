@@ -300,3 +300,9 @@ html.pv-locked { overflow: hidden; }
   .pv-toast, .pv-week-bar span, .pv-request { transition: none; }
 }
 .pv-tab > span:not(.pv-count) { white-space: nowrap; }
+
+/* Normal view: no inner scrollbar, so the mouse wheel and touch always scroll the page.
+   The expanded (full-screen) view keeps its own scrolling. */
+.pv:not(.is-expanded) .pv-app { height: auto; min-height: var(--pv-h); }
+.pv:not(.is-expanded) .pv-main { overflow: visible; }
+.pv:not(.is-expanded) .pv-side { align-self: stretch; }
