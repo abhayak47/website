@@ -83,6 +83,40 @@ GUIDES = [
 ]
 
 
+MODIFIED = '2026-10-15'
+UPDATED_LABEL = '15 October 2026'
+DOWNLOADS = [
+    ('/downloads/onjaal-leave-policy-template.pdf', 'Leave policy template', 'A fill-in leave policy covering leave types, accrual, approvals and records.'),
+    ('/downloads/onjaal-attendance-policy-template.pdf', 'Attendance policy template', 'A fill-in attendance policy covering hours, grace periods and regularisation.'),
+    ('/downloads/onjaal-hrms-vendor-checklist.pdf', 'HRMS vendor evaluation checklist', 'A weighted scorecard and the questions to ask every HR software vendor.'),
+]
+# extra sections and downloads per guide (examples are illustrative; sources point to official bodies)
+EXTRA = {
+    'hrms-for-indian-smes': dict(download=2, add=[
+        ('Worked example: what a per-user plan costs', ['p:A 60-person company on a per-user plan priced at ₹59 per user per month, billed annually, pays 60 × ₹59 × 12 = ₹42,480 a year, plus applicable taxes and any one-time services such as setup. Teams of up to 5 employees can start on a free plan. Prices change, so always check the vendor\'s current published page, and compare flat-band pricing the same way: divide the monthly band by the number of people you actually have.']),
+        ('Sources and further reading', ['p:Statutory processes are set by the relevant bodies. Check the current rules with the <a class="inline-link" href="https://www.epfindia.gov.in/" rel="noopener">Employees\' Provident Fund Organisation</a> for provident fund and the <a class="inline-link" href="https://www.esic.gov.in/" rel="noopener">Employees\' State Insurance Corporation</a> for ESI. Professional tax is levied by states, so check your state government\'s website. This guide does not give legal or tax advice.']),
+    ]),
+    'leave-and-attendance-management': dict(download=0, add=[
+        ('Worked example: one request, end to end', ['p:Rohan Deshmukh asks for casual leave on Friday. His manager approves it the same day. In a connected system the leave balance drops by one day, Friday shows as leave in attendance (not as absence), and the monthly report counts it correctly. In a patchwork of chat, a leave sheet and a biometric export, someone has to make those three changes by hand, and any of them can be missed. This example uses fictional people.']),
+    ]),
+    'leave-policy-checklist': dict(download=0, add=[
+        ('Worked example: wording you can adapt', ['p:<em>Illustrative only. The numbers are placeholders, not legal requirements.</em> "Casual leave: 8 days per calendar year, credited on 1 January, up to 2 days at a time, no carry-forward. Sick leave: 6 days per year; a medical certificate is needed after 2 consecutive days. Earned leave: 1 day for every 20 days worked, carried forward up to 30 days. Requests are made in the leave system at least 3 working days ahead, except emergencies; managers respond within 2 working days."']),
+        ('Sources and further reading', ['p:Read the current text of central laws such as the Maternity Benefit Act, 1961 on <a class="inline-link" href="https://www.indiacode.nic.in/" rel="noopener">India Code</a>, the Government of India\'s database of legislation, and check your state labour department for the Shops and Establishments rules that apply to you. This guide does not give legal advice.']),
+    ]),
+    'attendance-policy-checklist': dict(download=1, add=[
+        ('Worked example: wording you can adapt', ['p:<em>Illustrative only. Adapt the numbers to your business.</em> "Working hours are 9:30 to 18:30 with a 60-minute break. A 15-minute grace period applies. Three late marks in a month count as a half-day of casual leave. Missed or incorrect punches can be corrected within 3 working days with a reason; the reporting manager approves. Approved leave and public holidays update attendance automatically."']),
+    ]),
+    'choosing-hr-software': dict(download=2, add=[
+        ('Worked example: a simple scorecard', ['p:Pick five criteria and give each a weight from 1 to 3: fit with your leave rules (3), leave flowing into attendance (3), published pricing (2), setup plan (2), data export (2). Score each vendor from 1 to 5, multiply by the weight and add up. A vendor that scores 4 on fit (12) and 5 on pricing (10) can still lose to one with a stronger setup plan and data export, which is the point of writing it down before the sales calls.']),
+    ]),
+}
+for g in GUIDES:
+    x = EXTRA.get(g['slug'])
+    if x:
+        g['sections'] = g['sections'] + x['add']
+        g['download'] = DOWNLOADS[x['download']]
+
+
 def shell(path, title, desc, crumbs, main, extra_ld=None, og_type='website'):
     url = 'https://onjaal.com' + path
     items = [{"@type": "ListItem", "position": i + 1, "name": n, "item": 'https://onjaal.com' + h} for i, (n, h) in enumerate(crumbs)]
@@ -177,16 +211,19 @@ def section_html(title, items):
 def guide_page(g):
     secs = ''.join(section_html(t, items) for t, items in g['sections'])
     related = [x for x in GUIDES if x['slug'] != g['slug']][:3]
+    d = g.get('download')
+    dl = ('<p class="dl-box"><a class="btn btn-outline" href="%s" download>Download: %s (PDF)</a><span>Free. %s</span></p>' % (d[0], e(d[1]), e(d[2]))) if d else ''
     rel = ''.join('<li><a href="/resources/%s/">%s</a></li>' % (x['slug'], e(x['title'])) for x in related)
-    ld = [{"@type": "Article", "headline": g['title'], "description": g['desc'], "datePublished": DATE, "dateModified": DATE,
+    ld = [{"@type": "Article", "headline": g['title'], "description": g['desc'], "datePublished": DATE, "dateModified": MODIFIED,
            "author": {"@id": "https://onjaal.com/#organization"}, "publisher": {"@id": "https://onjaal.com/#organization"},
            "mainEntityOfPage": "https://onjaal.com/resources/%s/" % g['slug']}]
     main = hero(e(g['title']), e(g['intro']),
                 '<li><a href="/">Home</a></li><li><a href="/resources/">Resources</a></li><li><span aria-current="page">%s</span></li>' % e(g['tag']),
-                '<p class="meta-line">%s · %s</p>' % (e(g['tag']), g['read'])) + f'''
+                '<p class="meta-line">%s · %s · Published by the Onjaal team · Updated %s</p>' % (e(g['tag']), g['read'], UPDATED_LABEL)) + f'''
 <section class="section">
   <div class="wrap">
     <article class="article">
+      {dl}
       {secs}
       <aside class="related" aria-label="Related guides"><h2>Keep reading</h2><ul>{rel}</ul></aside>
       <p class="fine">This guide is general information, not legal advice. Rules differ by state and organisation, so have your final policy reviewed by a qualified advisor.</p>
@@ -206,6 +243,9 @@ def main():
     cards = ''.join(
         f'''<a class="res-card" href="/resources/{g['slug']}/" data-reveal><span class="res-tag">{g['tag']}</span><h3>{e(g['title'])}</h3><p>{e(g['desc'])}</p><span class="card-foot">{g['read']} <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>'''
         for g in GUIDES)
+    dls = ''.join(
+        '<a class="res-card" href="%s" download data-reveal><span class="res-tag">PDF template</span><h3>%s</h3><p>%s</p><span class="card-foot">Download <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg></span></a>' % (u, e(t), e(dsc))
+        for u, t, dsc in DOWNLOADS)
     hub = hero('Practical guides for people teams.', 'Short, plain-English guides for HR in growing Indian businesses. No sign-up needed.',
                '<li><a href="/">Home</a></li><li><span aria-current="page">Resources</span></li>') + f'''
     <section class="section">

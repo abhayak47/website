@@ -61,3 +61,22 @@ Login, registration and dashboards: **not applicable**. This repository contains
 6. Supply company identity facts (legal name, address, GSTIN/CIN, grievance officer, social profiles) so `Organization` markup and trust pages can be completed truthfully.
 7. Decide on analytics: create the GA4 property, supply the ID, then update the privacy and trust copy before enabling.
 8. Add a small number of genuinely reviewed guides over time; avoid statutory or legal advice without expert review.
+
+## Launch pass (2026-10-15)
+
+Additional checks run on the final working tree, all passing unless noted:
+
+| Check | Result |
+|---|---|
+| `check_site.py` / `check_seo.py` | 18 pages, 0 errors, 0 failures; sitemap 16 URLs |
+| Horizontal overflow, all 18 pages at 360, 390, 768, 1024 px | None |
+| Lighthouse, mobile profile: home, about, support, pricing, HRMS, contact, guide | Performance 97 to 99, Accessibility 100, Best Practices 100, SEO 100, CLS 0 |
+| Pricing calculator, 80 combinations (1, 5, 6, 150, 1,000 users x plan x billing x add-ons) | 0 mismatches; original 150-user figure reproduces; input clamped to 1 to 1,000 |
+| Mouse wheel over the interactive preview | Scrolls the page (previously trapped by an inner scrollbar) |
+| Browser user flows (13 checks): preview, tour tabs by keyboard, theme, mobile menu, enquiry form validation / failure / success | 13 of 13 pass; form network call intercepted, nothing sent |
+| Keyboard Tab-through and accessible names on 6 pages | 0 issues |
+| Colour contrast of design tokens (WCAG AA) | Two failures found and fixed (placeholder text, form field borders) |
+
+Defects found and fixed during this pass: preview scroll trap; **mobile menu collapsed to a 48 px sliver** (header backdrop-filter created a containing block for the fixed menu); download button overflowed on small screens; dark-mode text invisible under the preview; price format ("1188"); an unconfirmed "Unlimited employees" claim.
+
+Still not verifiable here: FormSubmit delivery to the real inbox, Search Console and Bing, field Core Web Vitals, screen-reader testing, Google Rich Results Test, anything about the private product application. See `docs/launch-readiness-checklist.md`.

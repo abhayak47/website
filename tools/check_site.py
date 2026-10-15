@@ -92,6 +92,27 @@ for f, s in sorted(pages.items()):
         if not og or not os.path.exists(og.group(1).lstrip('/')):
             err(f, 'og:image missing or file not found')
 
+# ---- calls to action: every ?interest= value must map to a real option in the enquiry form
+js = read('assets/js/site.js')
+mapping = dict(re.findall(r"(\w+): '([^']+)'", js[js.index('var map = {'):js.index('};', js.index('var map = {'))]))
+options = set(re.findall(r'<option>([^<]*)</option>', read('contact/index.html')))
+used = set()
+for f, s_ in pages.items():
+    used |= set(re.findall(r'interest=(\w+)', s_))
+for k in sorted(used):
+    if k not in mapping:
+        err('cta', 'interest=%s is linked but not mapped in assets/js/site.js' % k)
+    elif mapping[k] not in options:
+        err('cta', 'interest=%s maps to "%s" which is not an option on /contact/' % (k, mapping[k]))
+
+# ---- prices: every rupee amount on the site must be an approved figure (keeps pages consistent)
+APPROVED = {'0', '59', '71', '99', '119', '708', '852', '15,000', '60,000', '1,66,200', '1,06,200', '42,480', '200', '1,188', '8,850'}
+for f, s_ in pages.items():
+    body = re.sub(r'<script.*?</script>', '', s_, flags=re.S)
+    for amt in set(re.findall(r'₹\s?([0-9][0-9,]*)', body)):
+        if amt not in APPROVED:
+            warn(f, 'price figure ₹%s is not in the approved list (update APPROVED in tools/check_site.py if it is intentional)' % amt)
+
 sm = read('sitemap.xml')
 sm_urls = set(re.findall(r'<loc>([^<]*)</loc>', sm))
 for u in sm_urls:
